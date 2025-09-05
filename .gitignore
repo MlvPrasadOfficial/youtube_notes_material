@@ -1,18 +1,19 @@
-# Exclude Python folder
-python/
+# Ignore everything
+/*
 
-# Python
+# Except these files and folders
+!README.md
+!.gitignore
+!python/
+!python/**
+
+# But still ignore Python cache files
 *.py[cod]
 __pycache__/
 *.so
 .Python
-env/
-venv/
-.venv
-pip-log.txt
-pip-delete-this-directory.txt
 
-# Jupyter Notebook
+# Jupyter Notebook checkpoints
 .ipynb_checkpoints
 *.ipynb_checkpoints/
 
@@ -28,16 +29,8 @@ pip-delete-this-directory.txt
 Thumbs.db
 desktop.ini
 
-# Claude
-.claude/
-
 # Temporary files
 *.tmp
 *.temp
 *.log
 *.bak
-
-# Distribution / packaging
-dist/
-build/
-*.egg-info/

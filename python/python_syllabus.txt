@@ -1,0 +1,3624 @@
+PURE PYTHON PROGRAMMING - COMPREHENSIVE DETAILED SYLLABUS
+=========================================================
+
+MODULE 1: PYTHON BASICS AND ENVIRONMENT
+----------------------------------------
+1.1 Introduction to Python
+    1.1.1 History and philosophy of Python
+        * Created by Guido van Rossum in 1991
+        * Origin of the name "Python"
+        * Python Software Foundation
+        * Open source development model
+    1.1.2 Python 2 vs Python 3 differences
+        * Print statement vs print function
+        * Integer division behavior
+        * Unicode handling
+        * Range vs xrange
+        * Dictionary methods changes
+        * Input vs raw_input
+    1.1.3 CPython, PyPy, Jython, IronPython implementations
+        * CPython: Standard implementation in C
+        * PyPy: JIT compiled implementation
+        * Jython: Java platform implementation
+        * IronPython: .NET framework implementation
+        * MicroPython: Microcontroller implementation
+    1.1.4 Python Enhancement Proposals (PEPs)
+        * PEP 8: Style Guide
+        * PEP 20: The Zen of Python
+        * PEP 257: Docstring Conventions
+        * PEP 484: Type Hints
+        * Understanding PEP process
+    1.1.5 The Zen of Python (import this)
+        * Beautiful is better than ugly
+        * Explicit is better than implicit
+        * Simple is better than complex
+        * Complex is better than complicated
+        * Readability counts
+
+1.2 Python Installation and Setup
+    1.2.1 Installing Python on Windows
+        * Using official installer
+        * Microsoft Store installation
+        * Chocolatey package manager
+        * Adding to PATH during installation
+        * py launcher configuration
+    1.2.2 Installing Python on Mac
+        * Using official installer
+        * Homebrew installation
+        * Managing with pyenv
+        * Xcode command line tools
+    1.2.3 Installing Python on Linux
+        * Using package managers (apt, yum, dnf)
+        * Building from source
+        * Using deadsnakes PPA
+        * Alternative versions management
+    1.2.4 Understanding Python installation directory structure
+        * Scripts/bin directory
+        * Lib/lib directory
+        * Include directory
+        * DLLs directory (Windows)
+        * site-packages directory
+    1.2.5 Python executable and python.exe
+        * python vs python3 command
+        * Version specific executables
+        * Symbolic links
+    1.2.6 Setting up PATH environment variable
+        * Windows PATH configuration
+        * Unix/Linux PATH configuration
+        * Understanding path resolution
+        * Troubleshooting PATH issues
+    1.2.7 Managing multiple Python versions
+        * pyenv for version management
+        * virtualenv for isolation
+        * conda environments
+        * Docker containers
+    1.2.8 Python launcher (py command on Windows)
+        * py.ini configuration
+        * Version selection with -2, -3
+        * Shebang line support
+
+1.3 Python Interactive Environment
+    1.3.1 Python REPL (Read-Eval-Print Loop)
+        * Starting the interpreter
+        * Expression evaluation
+        * Statement execution
+        * Multi-line statements
+        * History navigation
+    1.3.2 Interactive mode vs script mode
+        * When to use interactive mode
+        * Benefits of script mode
+        * Transitioning between modes
+    1.3.3 IPython interactive shell
+        * Installation and setup
+        * Magic commands (%run, %timeit, %debug)
+        * Shell commands with !
+        * Input/output caching
+        * Rich display system
+    1.3.4 Command history and tab completion
+        * Readline library
+        * .python_history file
+        * Customizing completion
+        * History search
+    1.3.5 Exit(), quit(), Ctrl+D, Ctrl+Z
+        * Proper exit methods
+        * Platform differences
+        * sys.exit() vs exit()
+    1.3.6 The underscore variable (_)
+        * Last expression result
+        * In IPython: __, ___
+        * Use in calculations
+
+1.4 Python Script Execution
+    1.4.1 Creating .py files
+        * Text editors vs IDEs
+        * File encoding (UTF-8)
+        * Line endings (CRLF vs LF)
+        * File naming conventions
+    1.4.2 Running scripts from command line
+        * python script.py syntax
+        * Relative vs absolute paths
+        * Current working directory
+    1.4.3 Shebang line (#!/usr/bin/env python)
+        * Purpose and syntax
+        * env vs direct path
+        * Windows compatibility
+        * Python version specification
+    1.4.4 Making scripts executable
+        * chmod +x on Unix/Linux
+        * File associations on Windows
+        * Running without python command
+    1.4.5 Command line arguments with sys.argv
+        * Accessing arguments
+        * argv[0] as script name
+        * Argument parsing
+        * Handling missing arguments
+    1.4.6 Python -m flag for module execution
+        * Running modules as scripts
+        * Package execution
+        * Common -m uses (pip, venv, http.server)
+
+1.5 Python Memory Model
+    1.5.1 Objects and references
+        * Everything is an object
+        * Object identity (id())
+        * Object type (type())
+        * Object value
+    1.5.2 Variables as labels
+        * Variable assignment
+        * Multiple references
+        * Reference reassignment
+    1.5.3 Mutable vs immutable objects
+        * Immutable: int, float, str, tuple, frozenset
+        * Mutable: list, dict, set, bytearray
+        * Implications for function arguments
+        * In-place operations
+    1.5.4 Memory allocation and deallocation
+        * Heap vs stack
+        * Object creation
+        * Memory pools
+        * Small integer caching
+    1.5.5 Reference counting
+        * sys.getrefcount()
+        * Increment/decrement rules
+        * Circular references problem
+    1.5.6 Garbage collection
+        * Generational garbage collection
+        * gc module interface
+        * Collection thresholds
+        * Manual collection
+        * Disabling garbage collection
+    1.5.7 Memory optimization techniques
+        * __slots__ for classes
+        * Generator expressions
+        * String interning
+        * Object pooling
+        * Weak references
+
+MODULE 2: BASIC DATA TYPES AND OPERATIONS
+------------------------------------------
+2.1 Numeric Types
+    2.1.1 Integers (int)
+        * Arbitrary precision integers
+            - No overflow in Python 3
+            - Memory limitations only
+            - Performance considerations
+        * Binary, octal, hexadecimal literals
+            - 0b prefix for binary (0b1010)
+            - 0o prefix for octal (0o12)
+            - 0x prefix for hexadecimal (0xFF)
+            - Converting between bases
+        * Underscore in numeric literals
+            - Readability improvement (1_000_000)
+            - Rules for underscore placement
+            - Not at beginning or end
+        * Integer methods
+            - bit_length(): Number of bits
+            - to_bytes(): Convert to bytes
+            - from_bytes(): Create from bytes
+            - bit_count(): Count set bits
+    2.1.2 Floating-point numbers (float)
+        * IEEE 754 representation
+            - Sign, exponent, mantissa
+            - Special values (inf, -inf, nan)
+            - sys.float_info details
+        * Precision limitations
+            - Rounding errors (0.1 + 0.2)
+            - Comparison issues
+            - Using math.isclose()
+        * Scientific notation
+            - E notation (1.5e10)
+            - Engineering notation
+            - Format specifiers
+        * Float methods
+            - is_integer(): Check whole number
+            - as_integer_ratio(): Fraction representation
+            - hex(): Hexadecimal representation
+            - fromhex(): Create from hex
+    2.1.3 Complex numbers (complex)
+        * Real and imaginary parts
+            - Accessing with .real and .imag
+            - Creating with j suffix (3+4j)
+            - complex() constructor
+        * Complex arithmetic
+            - Addition and subtraction
+            - Multiplication and division
+            - Conjugate method
+        * Complex functions (cmath module)
+            - Phase and modulus
+            - Trigonometric functions
+            - Exponential and logarithm
+    2.1.4 Decimal module for precise decimal arithmetic
+        * Creating Decimal objects
+            - From strings for precision
+            - From floats (precision loss)
+            - Context settings
+        * Decimal arithmetic
+            - Exact decimal representation
+            - Configurable precision
+            - Rounding modes
+        * Decimal context
+            - getcontext() and setcontext()
+            - Local context with localcontext()
+            - Precision and rounding settings
+    2.1.5 Fractions module for rational numbers
+        * Creating Fraction objects
+            - From numerator/denominator
+            - From strings
+            - From floats
+        * Fraction arithmetic
+            - Automatic simplification
+            - Mixed operations
+            - limit_denominator() method
+
+2.2 Boolean Type
+    2.2.1 True and False literals
+        * Case sensitivity
+        * Subclass of int (True=1, False=0)
+        * Singleton objects
+    2.2.2 Truthy and falsy values
+        * Falsy: None, False, 0, 0.0, 0j, '', [], {}, set(), ()
+        * Everything else is truthy
+        * Custom __bool__() method
+        * __len__() as fallback
+    2.2.3 Boolean operators (and, or, not)
+        * and operator behavior
+            - Returns first falsy or last value
+            - Short-circuit evaluation
+        * or operator behavior
+            - Returns first truthy or last value
+            - Short-circuit evaluation
+        * not operator
+            - Always returns True or False
+            - Double negation pattern
+    2.2.4 Short-circuit evaluation
+        * Performance benefits
+        * Side effect considerations
+        * Common patterns
+        * Guard clauses
+    2.2.5 Boolean context
+        * if statements
+        * while loops
+        * Conditional expressions
+        * filter() function
+    2.2.6 Comparison operators
+        * Equality (==, !=)
+        * Ordering (<, >, <=, >=)
+        * Identity (is, is not)
+        * Membership (in, not in)
+    2.2.7 Chained comparisons
+        * Multiple comparisons (a < b < c)
+        * Evaluation order
+        * Short-circuit behavior
+        * Equivalent expanded form
+
+2.3 None Type
+    2.3.1 The None object
+        * Singleton pattern
+        * NoneType class
+        * Memory address consistency
+    2.3.2 None as default return value
+        * Functions without return
+        * Early return patterns
+        * Procedures vs functions
+    2.3.3 None in conditional statements
+        * Falsy behavior
+        * Explicit checks (is None)
+        * None vs empty containers
+    2.3.4 Identity vs equality with None
+        * Why use "is None"
+        * Performance considerations
+        * PEP 8 recommendations
+    2.3.5 Common use cases for None
+        * Optional parameters
+        * Sentinel values
+        * Missing data representation
+        * Initial values
+        * Cache invalidation
+
+2.4 Type System
+    2.4.1 Dynamic typing
+        * Runtime type checking
+        * Type changes during execution
+        * Duck typing philosophy
+        * No compile-time checks
+    2.4.2 Strong typing
+        * No implicit conversions
+        * Type safety
+        * Explicit conversions required
+    2.4.3 Duck typing philosophy
+        * "If it walks like a duck..."
+        * Protocol-based design
+        * EAFP vs LBYL
+        * Polymorphism without inheritance
+    2.4.4 Type checking with type() and isinstance()
+        * type() for exact type
+        * isinstance() for inheritance
+        * Multiple type checking
+        * When to use each
+    2.4.5 Type conversion functions
+        * int() conversion
+            - From strings
+            - From floats (truncation)
+            - Base parameter
+        * float() conversion
+            - From strings
+            - From integers
+            - Special values
+        * str() conversion
+            - Default representation
+            - Encoding considerations
+        * bool() conversion
+            - Truthiness testing
+            - Explicit conversion
+        * complex() conversion
+            - From strings
+            - From numbers
+    2.4.6 Type hints and annotations (Python 3.5+)
+        * Function annotations
+            - Parameter types
+            - Return types
+            - -> syntax
+        * Variable annotations
+            - Type declarations
+            - Class variables
+        * typing module basics
+            - List, Dict, Tuple types
+            - Optional, Union types
+            - Any type
+            - Type aliases
+        * Runtime behavior
+            - No enforcement
+            - __annotations__ dict
+            - get_type_hints()
+
+MODULE 3: STRINGS AND TEXT PROCESSING
+--------------------------------------
+3.1 String Basics
+    3.1.1 String literals
+        * Single quotes ('string')
+            - When to use
+            - Escaping quotes
+        * Double quotes ("string")
+            - When to use
+            - Consistency in codebase
+        * Triple quotes ('''string''' or """string""")
+            - Multiline strings
+            - Docstrings
+            - Preserving formatting
+        * Quote nesting
+            - Mixing quote types
+            - Escape sequences
+    3.1.2 Raw strings (r-strings)
+        * r prefix syntax
+        * No escape processing
+        * Use in regex patterns
+        * Windows file paths
+        * Cannot end with backslash
+    3.1.3 Unicode strings
+        * Default in Python 3
+        * Unicode escapes (\u, \U)
+        * Emoji support
+        * Normalization forms
+    3.1.4 String immutability
+        * Cannot modify in place
+        * Creating new strings
+        * Performance implications
+        * Memory efficiency
+    3.1.5 String interning
+        * Small string optimization
+        * sys.intern() function
+        * Memory savings
+        * Identity comparisons
+    3.1.6 String concatenation and repetition
+        * + operator
+        * * operator
+        * += augmented assignment
+        * Performance considerations
+        * join() for multiple strings
+
+3.2 String Indexing and Slicing
+    3.2.1 Positive and negative indexing
+        * Zero-based indexing
+        * Negative indices from end
+        * IndexError exceptions
+        * len() function
+    3.2.2 Basic slicing [start:stop]
+        * Exclusive stop index
+        * Default values
+        * Empty slices
+        * Out of range indices
+    3.2.3 Extended slicing [start:stop:step]
+        * Step parameter
+        * Negative steps
+        * Reversing strings
+        * Every nth character
+    3.2.4 Slice objects
+        * slice() constructor
+        * Reusable slices
+        * indices() method
+        * Slice assignment (for lists)
+    3.2.5 Common slicing patterns
+        * First n characters [:n]
+        * Last n characters [-n:]
+        * All but first [1:]
+        * All but last [:-1]
+        * Copy of string [:]
+    3.2.6 String reversal techniques
+        * [::-1] idiom
+        * reversed() with join()
+        * Loop approaches
+        * Performance comparison
+
+3.3 String Methods
+    3.3.1 Case methods
+        * upper(): Convert to uppercase
+        * lower(): Convert to lowercase
+        * capitalize(): First letter uppercase
+        * title(): Title case conversion
+        * swapcase(): Swap case
+        * casefold(): Aggressive lowercase
+    3.3.2 Search methods
+        * find(sub[, start[, end]]): Find substring
+            - Returns index or -1
+            - Optional start/end
+        * index(sub[, start[, end]]): Find or raise
+            - Raises ValueError
+            - Same parameters as find
+        * rfind() and rindex(): Right-to-left search
+        * count(sub[, start[, end]]): Count occurrences
+    3.3.3 Test methods
+        * startswith(prefix[, start[, end]])
+            - Tuple of prefixes
+            - Optional bounds
+        * endswith(suffix[, start[, end]])
+            - Tuple of suffixes
+            - Optional bounds
+        * isalpha(): Alphabetic characters
+        * isdigit(): Digit characters
+        * isalnum(): Alphanumeric
+        * isspace(): Whitespace
+        * isupper(), islower(): Case checking
+        * istitle(): Title case check
+        * isidentifier(): Valid Python identifier
+        * isprintable(): Printable characters
+        * isascii(): ASCII characters only
+        * isdecimal(), isnumeric(): Number checks
+    3.3.4 Modification methods
+        * replace(old, new[, count])
+            - Replace occurrences
+            - Limit replacements
+            - Case sensitivity
+        * strip([chars]): Remove leading/trailing
+            - Default whitespace
+            - Custom characters
+        * lstrip([chars]): Left strip
+        * rstrip([chars]): Right strip
+        * removeprefix(prefix): Remove prefix (3.9+)
+        * removesuffix(suffix): Remove suffix (3.9+)
+    3.3.5 Split and join operations
+        * split([sep[, maxsplit]])
+            - Default whitespace splitting
+            - Custom separator
+            - Limit splits
+        * rsplit([sep[, maxsplit]]): Right split
+        * splitlines([keepends]): Split on line breaks
+        * partition(sep): Three-part split
+        * rpartition(sep): Right partition
+        * join(iterable): Join with separator
+            - Efficient concatenation
+            - Common patterns
+    3.3.6 String alignment
+        * center(width[, fillchar])
+            - Center in field
+            - Custom fill character
+        * ljust(width[, fillchar]): Left justify
+        * rjust(width[, fillchar]): Right justify
+        * zfill(width): Pad with zeros
+        * expandtabs([tabsize]): Expand tab characters
+
+3.4 String Formatting
+    3.4.1 Old-style % formatting
+        * %s: String conversion
+        * %d, %i: Integer
+        * %f: Float
+        * %x, %X: Hexadecimal
+        * %o: Octal
+        * %e, %E: Scientific notation
+        * %g, %G: General format
+        * %%: Literal %
+        * Field width and precision
+        * Flags (-, +, 0, space, #)
+        * Dictionary formatting %(name)s
+    3.4.2 str.format() method
+        * Positional arguments
+            - {0}, {1} syntax
+            - Implicit positioning {}
+            - Reusing arguments
+        * Keyword arguments
+            - {name} syntax
+            - Mixing positional and keyword
+        * Format specification mini-language
+            - [[fill]align][sign][#][0][width][,][.precision][type]
+            - Alignment: <, >, ^, =
+            - Sign: +, -, space
+            - Width and precision
+            - Type codes: s, d, f, e, g, x, o, b
+            - Thousands separator
+        * Accessing attributes and items
+            - {0.attribute}
+            - {0[key]}
+            - Nested access
+        * Custom formatting
+            - __format__ method
+            - Format dispatch
+    3.4.3 F-strings (formatted string literals)
+        * Expression evaluation
+            - {expression} syntax
+            - Any valid Python expression
+            - Function calls
+            - Method calls
+        * Format specifiers
+            - {expression:format_spec}
+            - Same mini-language
+            - Dynamic format specs
+        * Debugging with = specifier
+            - {expr=} shows name and value
+            - Useful for debugging
+        * Raw f-strings (rf or fr)
+        * Triple-quoted f-strings
+        * Performance advantages
+        * Limitations
+            - No backslashes in expressions
+            - Not for user input
+    3.4.4 Template strings
+        * string.Template class
+        * $variable syntax
+        * ${variable} for disambiguation
+        * $$ for literal $
+        * Safe substitution
+        * Custom delimiters
+    3.4.5 String interpolation best practices
+        * Security considerations
+        * Performance comparison
+        * Readability factors
+        * Python version compatibility
+
+3.5 Unicode and Encoding
+    3.5.1 ASCII vs Unicode
+        * 7-bit ASCII (0-127)
+        * Extended ASCII issues
+        * Unicode as superset
+        * Unicode code points
+    3.5.2 UTF-8, UTF-16, UTF-32 encodings
+        * UTF-8: Variable width (1-4 bytes)
+            - ASCII compatibility
+            - Most common encoding
+            - Web standard
+        * UTF-16: Variable width (2-4 bytes)
+            - Surrogate pairs
+            - BOM (Byte Order Mark)
+        * UTF-32: Fixed width (4 bytes)
+            - Direct code point mapping
+            - Memory inefficient
+    3.5.3 Encoding and decoding strings
+        * str.encode(encoding='utf-8')
+            - Bytes output
+            - Error handling
+        * bytes.decode(encoding='utf-8')
+            - String output
+            - Error handling
+    3.5.4 Handling encoding errors
+        * strict: Raise UnicodeError (default)
+        * ignore: Skip bad characters
+        * replace: Use replacement character
+        * backslashreplace: Use escape sequence
+        * xmlcharrefreplace: XML character reference
+        * namereplace: Use \N{...} escape
+    3.5.5 The codecs module
+        * codecs.open() with encoding
+        * Codec registry
+        * Custom error handlers
+        * BOM handling
+        * Incremental encoding/decoding
+    3.5.6 Byte strings vs text strings
+        * bytes type
+        * bytearray type
+        * Conversion between types
+        * When to use each
+        * Common pitfalls
+
+3.6 Regular Expressions (Complete Guide)
+    3.6.1 Regular expression fundamentals
+        * What are regular expressions
+            - Pattern matching language
+            - Text processing tool
+            - Declarative pattern description
+            - Finite state automata theory
+        * Use cases and applications
+            - Text validation (emails, phones, URLs)
+            - Data extraction from text
+            - String replacement and cleaning
+            - Log file analysis
+            - Web scraping
+            - Configuration file parsing
+        * Regular expressions vs string methods
+            - When to use regex
+            - Performance considerations
+            - Complexity vs maintainability
+            - Alternative approaches
+    3.6.2 re module comprehensive overview
+        * Importing and basic usage
+            - import re
+            - Module constants and functions
+            - Pattern compilation
+            - Error handling
+        * Core concepts
+            - Pattern objects vs string patterns
+            - Match objects and their methods
+            - Flags and modifiers
+            - Unicode support
+        * Performance optimization
+            - Compilation benefits
+            - Pattern reuse strategies
+            - Memory considerations
+            - Profiling regex performance
+    3.6.3 Pattern syntax and metacharacters
+        * Literal characters
+            - Regular characters match themselves
+            - Case sensitivity
+            - Unicode character support
+            - Special handling for whitespace
+        * Basic metacharacters
+            - . (dot): Any character except newline
+                - Behavior with DOTALL flag
+                - Character class equivalent [^\n]
+                - Performance implications
+            - ^ (caret): Start of string/line
+                - String vs line start (MULTILINE flag)
+                - Absolute string start with \A
+                - Position assertions
+            - $ (dollar): End of string/line
+                - String vs line end (MULTILINE flag)
+                - Absolute string end with \Z
+                - Before final newline with \z
+            - \ (backslash): Escape character
+                - Escaping metacharacters
+                - Special sequences introduction
+                - Raw strings importance
+        * Quantifiers (detailed)
+            - * (asterisk): Zero or more
+                - Greedy behavior
+                - Matching strategy
+                - Performance with backtracking
+            - + (plus): One or more
+                - Difference from *
+                - Common usage patterns
+                - Optimization opportunities
+            - ? (question mark): Zero or one (optional)
+                - Optional elements
+                - Making quantifiers non-greedy
+                - Conditional matching
+            - {n}: Exactly n occurrences
+                - Fixed repetition
+                - Exact count matching
+                - Use with character classes
+            - {n,}: n or more occurrences
+                - Minimum repetition
+                - Open-ended matching
+                - Memory considerations
+            - {n,m}: Between n and m occurrences
+                - Range quantification
+                - Bounded repetition
+                - Performance optimization
+        * Non-greedy quantifiers
+            - *?: Non-greedy zero or more
+            - +?: Non-greedy one or more
+            - ??: Non-greedy zero or one
+            - {n,m}?: Non-greedy range
+            - Backtracking behavior
+            - Performance implications
+            - When to use non-greedy
+    3.6.4 Character classes and ranges
+        * Basic character classes
+            - [abc]: Character set
+                - Explicit character listing
+                - Order independence
+                - Case sensitivity
+            - [^abc]: Negated character set
+                - Complement matching
+                - Exclusion patterns
+                - Common pitfalls
+        * Character ranges
+            - [a-z]: Lowercase letters
+            - [A-Z]: Uppercase letters
+            - [0-9]: Digits
+            - [a-zA-Z]: All letters
+            - [a-zA-Z0-9]: Alphanumeric
+            - Custom ranges: [a-fA-F0-9] for hex
+        * Special characters in classes
+            - Hyphen (-) placement
+                - Range vs literal hyphen
+                - Escaping rules
+                - Position matters
+            - Closing bracket (]) inclusion
+                - First position rule
+                - Escaping requirements
+            - Caret (^) behavior
+                - Negation only at start
+                - Literal caret elsewhere
+        * Predefined character classes
+            - \d: Digits [0-9]
+                - ASCII vs Unicode digits
+                - Locale considerations
+                - Performance vs [0-9]
+            - \D: Non-digits [^0-9]
+                - Complement of \d
+                - Unicode implications
+            - \w: Word characters [a-zA-Z0-9_]
+                - Language-specific variations
+                - Unicode word characters
+                - Identifier matching
+            - \W: Non-word characters [^a-zA-Z0-9_]
+                - Complement of \w
+                - Punctuation and symbols
+            - \s: Whitespace characters
+                - Space, tab, newline
+                - Unicode whitespace
+                - Vertical vs horizontal
+            - \S: Non-whitespace [^\s]
+                - Visible characters
+                - Text content matching
+        * Advanced character classes
+            - POSIX character classes
+                - [:alnum:] alphanumeric
+                - [:alpha:] alphabetic
+                - [:digit:] digits
+                - [:lower:] lowercase
+                - [:upper:] uppercase
+                - [:space:] whitespace
+                - [:punct:] punctuation
+            - Unicode categories
+                - \p{L}: Letters
+                - \p{N}: Numbers
+                - \p{P}: Punctuation
+                - \p{S}: Symbols
+                - \p{Z}: Separators
+    3.6.5 Groups and capturing
+        * Capturing groups
+            - (pattern): Basic capturing group
+                - Numbered groups (1, 2, 3...)
+                - Extraction and substitution
+                - Memory overhead
+            - Nested groups
+                - Group numbering rules
+                - Left-to-right numbering
+                - Maximum group limits
+            - Group references in patterns
+                - \1, \2, ... \99: Backreferences
+                - Self-referencing patterns
+                - Balanced matching limitations
+        * Named groups
+            - (?P<name>pattern): Named capture
+                - Descriptive group names
+                - Code maintainability
+                - Group name rules
+            - (?P=name): Named backreference
+                - Reference by name
+                - Code clarity
+                - Refactoring benefits
+            - Named group access
+                - Match.group('name')
+                - Match.groupdict()
+                - Template substitution
+        * Non-capturing groups
+            - (?:pattern): Non-capturing group
+                - Grouping without capture
+                - Performance benefits
+                - Memory efficiency
+                - When to use
+            - Alternation in groups
+                - (a|b) vs (?:a|b)
+                - Capture implications
+                - Performance comparison
+        * Special group constructs
+            - Atomic groups: (?>pattern)
+                - Prevent backtracking
+                - Performance optimization
+                - Possessive quantifiers
+            - Comments: (?#comment)
+                - Documentation in patterns
+                - Maintainability
+                - Verbose mode alternative
+    3.6.6 Anchors and boundaries
+        * String anchors
+            - ^: Start of string (or line)
+                - MULTILINE flag effects
+                - Beginning assertions
+                - Common patterns
+            - $: End of string (or line)
+                - MULTILINE flag effects
+                - End assertions
+                - Newline handling
+            - \A: Absolute start of string
+                - Always string start
+                - Multiline mode independent
+                - Strict matching
+            - \Z: Absolute end of string
+                - Always string end
+                - Before final newline
+                - Strict matching
+            - \z: Very end of string
+                - After any newline
+                - Most restrictive
+        * Word boundaries
+            - \b: Word boundary
+                - Word/non-word transitions
+                - Beginning/end of words
+                - Unicode considerations
+                - Common use cases
+            - \B: Non-word boundary
+                - Within words
+                - Between non-word chars
+                - Complement of \b
+        * Line boundaries
+            - ^: Line start (MULTILINE)
+                - After newline characters
+                - Multiple line matching
+                - Line-by-line processing
+            - $: Line end (MULTILINE)
+                - Before newline characters
+                - Line termination
+                - Cross-platform newlines
+    3.6.7 Lookahead and lookbehind assertions
+        * Positive lookahead
+            - (?=pattern): Positive lookahead
+                - Assert pattern follows
+                - Zero-width assertion
+                - Complex validation rules
+                - Password strength patterns
+            - Multiple lookaheads
+                - Combining conditions
+                - AND logic implementation
+                - Order independence
+        * Negative lookahead
+            - (?!pattern): Negative lookahead
+                - Assert pattern doesn't follow
+                - Exclusion patterns
+                - Avoiding unwanted matches
+                - Input validation
+        * Positive lookbehind
+            - (?<=pattern): Positive lookbehind
+                - Assert pattern precedes
+                - Fixed-width limitation
+                - Context-sensitive matching
+                - Extraction patterns
+            - Variable-width limitations
+                - Engine restrictions
+                - Workaround strategies
+                - Alternative approaches
+        * Negative lookbehind
+            - (?<!pattern): Negative lookbehind
+                - Assert pattern doesn't precede
+                - Fixed-width limitation
+                - Exclusion contexts
+                - Cleanup patterns
+        * Assertion combinations
+            - Multiple assertions
+                - Complex conditions
+                - Boundary combinations
+                - Performance considerations
+            - Assertion order
+                - Left-to-right evaluation
+                - Optimization opportunities
+                - Debugging strategies
+    3.6.8 re module functions (comprehensive)
+        * Matching functions
+            - re.match(pattern, string, flags=0)
+                - Match at string beginning
+                - Return Match object or None
+                - Use cases and limitations
+                - Performance characteristics
+            - re.search(pattern, string, flags=0)
+                - Search anywhere in string
+                - First match only
+                - Most commonly used
+                - Vs match() behavior
+            - re.fullmatch(pattern, string, flags=0)
+                - Entire string must match
+                - Implicit anchoring
+                - Validation use cases
+                - Added in Python 3.4
+        * Finding functions
+            - re.findall(pattern, string, flags=0)
+                - All non-overlapping matches
+                - Return list of strings/tuples
+                - Group handling behavior
+                - Memory considerations for large texts
+            - re.finditer(pattern, string, flags=0)
+                - Iterator of Match objects
+                - Memory efficient
+                - Full match information
+                - Preferred for large texts
+        * Substitution functions
+            - re.sub(pattern, repl, string, count=0, flags=0)
+                - Replace matches with repl
+                - Replacement string/function
+                - Count parameter for limiting
+                - Backreferences in replacement
+            - re.subn(pattern, repl, string, count=0, flags=0)
+                - Same as sub() but returns tuple
+                - (new_string, number_of_replacements)
+                - Useful for counting changes
+                - Performance same as sub()
+        * Splitting functions
+            - re.split(pattern, string, maxsplit=0, flags=0)
+                - Split string by pattern
+                - Maxsplit parameter
+                - Group handling in results
+                - Empty string handling
+        * Utility functions
+            - re.escape(pattern)
+                - Escape special characters
+                - User input safety
+                - Dynamic pattern building
+                - Literal string matching
+            - re.purge()
+                - Clear regex cache
+                - Memory management
+                - Pattern cache limits
+    3.6.9 Pattern compilation and flags
+        * re.compile() benefits
+            - Compile once, use multiple times
+                - Performance improvement
+                - Pattern object methods
+                - Reduced parsing overhead
+            - Pattern object methods
+                - Same names as module functions
+                - Implicit pattern parameter
+                - Method chaining possibilities
+            - When to compile
+                - Repeated usage patterns
+                - Performance critical code
+                - Complex pattern organization
+        * Compilation flags (detailed)
+            - re.IGNORECASE (re.I)
+                - Case-insensitive matching
+                - ASCII vs Unicode behavior
+                - Locale considerations
+                - Performance impact
+            - re.MULTILINE (re.M)
+                - ^ and $ match line boundaries
+                - Line-by-line processing
+                - Text file parsing
+                - Newline character handling
+            - re.DOTALL (re.S)
+                - . matches newline characters
+                - Single-line mode
+                - Cross-line patterns
+                - File content matching
+            - re.VERBOSE (re.X)
+                - Ignore whitespace in pattern
+                - Allow comments with #
+                - Multi-line pattern layout
+                - Self-documenting patterns
+            - re.ASCII (re.A)
+                - ASCII-only matching for \w, \W, \b, \B
+                - Override Unicode defaults
+                - Backwards compatibility
+                - Performance in ASCII contexts
+            - re.DEBUG
+                - Print compiled pattern
+                - Debugging tool
+                - Understanding compilation
+                - Pattern optimization
+        * Flag combinations
+            - Bitwise OR operations
+            - Multiple flags usage
+            - Flag interaction effects
+            - Common combinations
+        * Inline flags
+            - (?aiLmsux): Inline flag syntax
+                - Pattern-embedded flags
+                - Partial pattern flags
+                - Flag scoping rules
+    3.6.10 Match objects and methods
+        * Match object attributes
+            - .string: Original string
+            - .pattern: Pattern object
+            - .pos: Start position
+            - .endpos: End position
+            - .lastindex: Last matched group
+            - .lastgroup: Last matched named group
+        * Group access methods
+            - .group([group1, ...]): Get group(s)
+                - Default group 0 (entire match)
+                - Multiple group access
+                - None for unmatched groups
+                - Tuple return for multiple
+            - .groups([default]): All groups tuple
+                - All captured groups
+                - Default for unmatched
+                - Tuple unpacking
+            - .groupdict([default]): Named groups dict
+                - Dictionary of named groups
+                - Default for unmatched
+                - Key-value access
+        * Position methods
+            - .start([group]): Start position
+                - Character index start
+                - Group-specific positions
+                - Slice string extraction
+            - .end([group]): End position
+                - Character index end
+                - Exclusive end position
+                - Slice calculations
+            - .span([group]): (start, end) tuple
+                - Combined position info
+                - Convenient for slicing
+                - Group boundaries
+        * String methods
+            - .expand(template): Template expansion
+                - Backreference substitution
+                - Named group substitution
+                - Template string patterns
+    3.6.11 Advanced pattern techniques
+        * Conditional patterns
+            - (?(id/name)yes-pattern|no-pattern)
+                - Conditional matching
+                - Group existence checking
+                - Complex validation rules
+            - Lookahead conditions
+                - (?(?=...)yes|no) pattern
+                - Context-dependent matching
+                - Advanced parsing
+        * Recursive patterns (limited support)
+            - Self-referencing patterns
+            - Balanced parentheses
+            - Nested structures
+            - Engine limitations
+        * Atomic groups and possessive quantifiers
+            - (?>...) atomic grouping
+                - Prevent backtracking
+                - Performance optimization
+                - Possessive behavior
+            - *+, ++, ?+, {n,m}+ quantifiers
+                - Possessive quantifiers
+                - No backtracking
+                - Catastrophic backtracking prevention
+        * Pattern organization
+            - Named patterns with variables
+            - Pattern composition
+            - Modular regex design
+            - Code maintainability
+    3.6.12 Common regex patterns library
+        * Email validation patterns
+            - Basic: [a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}
+            - RFC 5322 compliant (simplified)
+            - International domain names
+            - Common edge cases
+            - Validation vs extraction
+        * URL/URI patterns
+            - HTTP/HTTPS URLs
+            - Protocol flexibility
+            - Domain validation
+            - Path and query parameters
+            - Fragment identifiers
+        * Phone number patterns
+            - US phone formats
+            - International formats
+            - Extension handling
+            - Formatting variations
+            - Country code support
+        * IP address patterns
+            - IPv4 validation
+            - IPv6 basic patterns
+            - CIDR notation
+            - Network addresses
+            - Range validation
+        * Date and time patterns
+            - MM/DD/YYYY format
+            - ISO 8601 format
+            - European DD/MM/YYYY
+            - Time patterns (12/24 hour)
+            - Timezone handling
+        * Financial patterns
+            - Currency amounts
+            - Credit card numbers
+            - Bank account formats
+            - Tax ID numbers
+            - Stock symbols
+        * Markup and code patterns
+            - HTML tag extraction
+            - XML parsing patterns
+            - Code comment extraction
+            - String literal matching
+            - Function signature parsing
+    3.6.13 Performance optimization and debugging
+        * Performance best practices
+            - Compile patterns when reusing
+            - Avoid catastrophic backtracking
+            - Use non-capturing groups
+            - Anchor patterns when possible
+            - Character class optimization
+        * Debugging techniques
+            - re.DEBUG flag usage
+            - Pattern testing tools
+            - Step-by-step matching
+            - Backtracking analysis
+            - Match visualization
+        * Common pitfalls
+            - Greedy vs non-greedy quantifiers
+            - Escape sequence handling
+            - Unicode considerations
+            - Newline handling
+            - Case sensitivity issues
+        * Alternative approaches
+            - When regex is overkill
+            - String methods vs regex
+            - Parser libraries
+            - State machines
+            - Performance comparisons
+    3.6.14 Integration and practical applications
+        * File processing
+            - Log file analysis
+            - Configuration parsing
+            - Data extraction
+            - Text cleanup
+            - Format conversion
+        * Data validation
+            - Form input validation
+            - API parameter checking
+            - Data quality assurance
+            - Format verification
+            - Constraint enforcement
+        * Text processing pipelines
+            - Search and replace workflows
+            - Data transformation
+            - Content filtering
+            - Template processing
+            - Report generation
+        * Web scraping applications
+            - HTML content extraction
+            - URL parsing
+            - Data mining
+            - Content classification
+            - Link extraction
+
+MODULE 4: DATA STRUCTURES
+--------------------------
+4.1 Lists
+    4.1.1 List creation and initialization
+        * Empty list: [] or list()
+        * From literals: [1, 2, 3]
+        * From iterables: list(range(10))
+        * List repetition: [0] * 10
+        * Nested lists: [[1, 2], [3, 4]]
+        * Mixed types: [1, "two", 3.0]
+    4.1.2 List indexing and slicing
+        * Positive indexing: list[0]
+        * Negative indexing: list[-1]
+        * Slicing: list[start:stop:step]
+        * Slice assignment: list[1:3] = [10, 20]
+        * Deletion with del: del list[0]
+    4.1.3 List methods
+        * append(x): Add single element
+            - In-place modification
+            - O(1) amortized time
+            - Returns None
+        * extend(iterable): Add multiple elements
+            - In-place modification
+            - Equivalent to list += iterable
+            - O(k) where k is length
+        * insert(i, x): Insert at position
+            - O(n) time complexity
+            - Negative indices
+            - Out of range handling
+        * remove(x): Remove first occurrence
+            - Raises ValueError if not found
+            - O(n) time complexity
+        * pop([i]): Remove and return
+            - Default last element
+            - O(1) for last, O(n) otherwise
+            - IndexError if empty
+        * clear(): Remove all elements
+            - Equivalent to del list[:]
+            - Keeps same list object
+        * index(x[, start[, end]]): Find position
+            - Raises ValueError if not found
+            - Optional search bounds
+        * count(x): Count occurrences
+            - Returns integer
+            - O(n) time complexity
+        * sort(key=None, reverse=False): Sort in place
+            - Stable sort (Timsort)
+            - key function for custom sorting
+            - reverse parameter
+            - Returns None
+        * reverse(): Reverse in place
+            - O(n) time complexity
+            - Returns None
+        * copy(): Shallow copy
+            - Equivalent to list[:]
+            - Only copies references
+    4.1.4 List comprehensions
+        * Basic syntax: [expr for item in iterable]
+        * With conditionals: [expr for item in iterable if condition]
+        * Multiple iterations: [expr for x in iter1 for y in iter2]
+        * Nested comprehensions: [[expr for col in row] for row in matrix]
+        * Performance vs loops
+        * Readability considerations
+    4.1.5 List unpacking
+        * Multiple assignment: a, b, c = [1, 2, 3]
+        * Extended unpacking: first, *rest = [1, 2, 3, 4]
+        * Swapping: a, b = b, a
+        * Function arguments: func(*list)
+    4.1.6 List aliasing vs copying
+        * Assignment creates alias: b = a
+        * Shallow copy: b = a.copy() or b = a[:]
+        * Deep copy: copy.deepcopy(a)
+        * Implications for nested lists
+    4.1.7 Lists as stacks and queues
+        * Stack (LIFO): append() and pop()
+        * Queue (FIFO): append() and pop(0)
+        * deque for efficient queues
+        * Performance considerations
+
+4.2 Tuples
+    4.2.1 Tuple creation and initialization
+        * Empty tuple: () or tuple()
+        * Single element: (1,) or 1,
+        * Multiple elements: (1, 2, 3)
+        * Without parentheses: 1, 2, 3
+        * From iterables: tuple(range(5))
+    4.2.2 Tuple packing and unpacking
+        * Packing: t = 1, 2, 3
+        * Unpacking: a, b, c = t
+        * Extended unpacking: first, *middle, last = t
+        * Function returns: return x, y
+    4.2.3 Named tuples (collections.namedtuple)
+        * Creating named tuple class
+        * Field access by name
+        * _asdict() method
+        * _replace() method
+        * _fields attribute
+        * _make() classmethod
+    4.2.4 Tuple as immutable lists
+        * Cannot modify elements
+        * Can contain mutable objects
+        * Hashable if contents hashable
+    4.2.5 Tuple methods
+        * count(x): Count occurrences
+        * index(x[, start[, end]]): Find position
+    4.2.6 When to use tuples vs lists
+        * Tuples for fixed collections
+        * Lists for variable collections
+        * Tuples as records
+        * Performance differences
+    4.2.7 Tuples as dictionary keys
+        * Hashability requirement
+        * Immutability guarantee
+        * Composite keys
+
+4.3 Sets
+    4.3.1 Set creation
+        * Empty set: set() (not {})
+        * From literals: {1, 2, 3}
+        * From iterables: set(range(5))
+        * Set comprehension: {x for x in range(5)}
+        * No duplicates allowed
+    4.3.2 Set operations
+        * Union (|, union())
+            - Combines elements
+            - Multiple sets: set1 | set2 | set3
+            - union(*others) method
+        * Intersection (&, intersection())
+            - Common elements
+            - Multiple sets
+            - intersection(*others) method
+        * Difference (-, difference())
+            - Elements in first not in second
+            - Not commutative
+            - difference(*others) method
+        * Symmetric difference (^, symmetric_difference())
+            - Elements in either but not both
+            - Only two sets
+    4.3.3 Set methods
+        * add(elem): Add single element
+            - No effect if present
+            - O(1) average time
+        * remove(elem): Remove element
+            - KeyError if not found
+            - O(1) average time
+        * discard(elem): Remove if present
+            - No error if not found
+            - O(1) average time
+        * pop(): Remove arbitrary element
+            - KeyError if empty
+            - "Arbitrary" but deterministic
+        * clear(): Remove all elements
+        * copy(): Shallow copy
+        * update(*others): Add elements from others
+            - In-place union
+            - Accepts iterables
+        * intersection_update(*others): Keep only intersection
+        * difference_update(*others): Remove elements
+        * symmetric_difference_update(other): Keep symmetric difference
+    4.3.4 Set comparisons
+        * Subset: set1 <= set2 or set1.issubset(set2)
+        * Proper subset: set1 < set2
+        * Superset: set1 >= set2 or set1.issuperset(set2)
+        * Proper superset: set1 > set2
+        * Disjoint: set1.isdisjoint(set2)
+        * Equality: set1 == set2
+    4.3.5 Frozen sets
+        * Immutable sets: frozenset()
+        * Hashable
+        * Can be set elements
+        * Can be dictionary keys
+        * No mutating methods
+    4.3.6 Set comprehensions
+        * Basic: {expr for item in iterable}
+        * With condition: {expr for item in iterable if condition}
+        * Performance benefits
+    4.3.7 Set performance
+        * O(1) average membership test
+        * Hash table implementation
+        * Memory overhead
+        * When to use sets
+
+4.4 Dictionaries
+    4.4.1 Dictionary creation and initialization
+        * Empty dict: {} or dict()
+        * Literals: {'a': 1, 'b': 2}
+        * dict() constructor: dict(a=1, b=2)
+        * From pairs: dict([('a', 1), ('b', 2)])
+        * From keys: dict.fromkeys(['a', 'b'], 0)
+        * Dictionary comprehension: {k: v for k, v in pairs}
+    4.4.2 Dictionary access and modification
+        * Access: dict[key] or dict.get(key)
+        * Assignment: dict[key] = value
+        * Deletion: del dict[key]
+        * Membership: key in dict
+        * KeyError handling
+    4.4.3 Dictionary methods
+        * get(key[, default]): Safe access
+            - Returns default if missing
+            - None if no default
+        * setdefault(key[, default]): Get or set
+            - Returns existing or sets default
+            - Useful for initialization
+        * keys(): View of keys
+            - Dictionary view object
+            - Dynamic view
+            - Set-like operations
+        * values(): View of values
+            - Dictionary view object
+            - Not set-like (may have duplicates)
+        * items(): View of (key, value) pairs
+            - Dictionary view object
+            - Set-like operations
+        * pop(key[, default]): Remove and return
+            - KeyError if missing and no default
+            - Returns value
+        * popitem(): Remove and return arbitrary pair
+            - LIFO in Python 3.7+
+            - KeyError if empty
+        * clear(): Remove all items
+        * update([other]): Update from other
+            - Accepts dict or pairs
+            - Keyword arguments
+            - Overwrites existing
+        * copy(): Shallow copy
+    4.4.4 Dictionary comprehensions
+        * Basic: {k: v for k, v in iterable}
+        * With condition: {k: v for k, v in iterable if condition}
+        * Key transformation: {k.upper(): v for k, v in dict.items()}
+        * Value transformation: {k: v*2 for k, v in dict.items()}
+    4.4.5 Dictionary views
+        * Dynamic views
+        * Set operations on keys() and items()
+        * Iteration over views
+        * View changes with dictionary
+    4.4.6 Ordered dictionaries (Python 3.7+)
+        * Insertion order preserved
+        * OrderedDict for explicit ordering
+        * move_to_end() method
+        * Reversed iteration
+    4.4.7 Default dictionaries (collections.defaultdict)
+        * Automatic default values
+        * Factory function
+        * Common patterns
+        * list, set, int factories
+    4.4.8 Counter (collections.Counter)
+        * Counting hashable objects
+        * most_common() method
+        * Arithmetic operations
+        * update() and subtract()
+    4.4.9 ChainMap (collections.ChainMap)
+        * Multiple dictionaries as one
+        * Search order
+        * maps attribute
+        * new_child() method
+        * Use cases
+
+4.5 Advanced Data Structures
+    4.5.1 collections.deque (double-ended queue)
+        * O(1) append and pop from both ends
+        * append(), appendleft()
+        * pop(), popleft()
+        * extend(), extendleft()
+        * rotate(n)
+        * maxlen parameter
+        * Thread-safe operations
+    4.5.2 heapq module (heap queue/priority queue)
+        * Min-heap implementation
+        * heappush(heap, item)
+        * heappop(heap)
+        * heappushpop(heap, item)
+        * heapreplace(heap, item)
+        * heapify(list)
+        * nlargest(n, iterable)
+        * nsmallest(n, iterable)
+        * Priority queue patterns
+    4.5.3 bisect module (binary search)
+        * bisect_left(a, x)
+        * bisect_right(a, x)
+        * insort_left(a, x)
+        * insort_right(a, x)
+        * Maintaining sorted lists
+    4.5.4 array module (typed arrays)
+        * Type codes: 'b', 'i', 'f', 'd', etc.
+        * Memory efficient
+        * C-style arrays
+        * Buffer protocol
+    4.5.5 queue module
+        * Queue: FIFO queue
+            - put(), get()
+            - task_done(), join()
+        * LifoQueue: LIFO queue (stack)
+        * PriorityQueue: Priority queue
+            - (priority, item) tuples
+        * Thread-safe
+        * Blocking operations
+    4.5.6 enum module (enumerations)
+        * Creating enums
+        * Auto() for automatic values
+        * Functional API
+        * @unique decorator
+        * Flag and IntFlag
+        * Iteration over enums
+
+MODULE 5: CONTROL FLOW
+-----------------------
+5.1 Conditional Statements
+    5.1.1 if statement
+        * Basic syntax
+        * Indentation requirements
+        * Colon usage
+        * Single line if
+    5.1.2 if-else statement
+        * else clause
+        * Mutual exclusivity
+        * Code organization
+    5.1.3 if-elif-else chains
+        * Multiple conditions
+        * Order of evaluation
+        * First match wins
+        * Default else
+    5.1.4 Nested conditionals
+        * Indentation levels
+        * Complexity considerations
+        * Refactoring nested conditions
+    5.1.5 Conditional expressions (ternary operator)
+        * value_if_true if condition else value_if_false
+        * Nested conditionals
+        * Readability concerns
+        * When to use
+    5.1.6 The walrus operator := (Python 3.8+)
+        * Assignment expressions
+        * Use in conditions
+        * Scope considerations
+        * Common patterns
+    5.1.7 Pattern matching with match-case (Python 3.10+)
+        * match statement syntax
+        * case patterns
+            - Literal patterns
+            - Capture patterns
+            - Wildcard patterns (_)
+            - OR patterns (|)
+            - AS patterns
+        * Guard clauses (if condition)
+        * Sequence patterns
+        * Mapping patterns
+        * Class patterns
+        * Value patterns
+
+5.2 Loops
+    5.2.1 for loops
+        * Iterating over sequences
+            - Lists, tuples, strings
+            - Sets, dictionaries
+            - Custom iterables
+        * range() function
+            - range(stop)
+            - range(start, stop)
+            - range(start, stop, step)
+            - Negative steps
+        * enumerate() function
+            - Index and value pairs
+            - Custom start index
+            - Unpacking in loop
+        * zip() function
+            - Parallel iteration
+            - Shortest sequence wins
+            - zip_longest (itertools)
+            - Unzipping with zip(*zipped)
+        * Nested loops
+            - Multiple iterations
+            - Break from nested loops
+            - Performance considerations
+    5.2.2 while loops
+        * Loop conditions
+            - Boolean expressions
+            - Truthy/falsy values
+        * Infinite loops
+            - while True pattern
+            - Break conditions
+            - Server loops
+        * Sentinel values
+            - Loop until condition
+            - Input validation
+    5.2.3 Loop control statements
+        * break statement
+            - Exit loop immediately
+            - Nested loop considerations
+        * continue statement
+            - Skip to next iteration
+            - Use in filtering
+        * pass statement
+            - Placeholder
+            - Empty loop body
+    5.2.4 else clause with loops
+        * Executes if no break
+        * Search patterns
+        * Common use cases
+
+5.3 Iterables and Iterators
+    5.3.1 Iteration protocol
+        * __iter__() method
+        * __next__() method
+        * StopIteration exception
+        * for loop mechanism
+    5.3.2 iter() and next() functions
+        * Creating iterators
+        * Manual iteration
+        * Default values for next()
+        * Sentinel values with iter()
+    5.3.3 Creating custom iterators
+        * Class-based iterators
+        * __iter__ returns self
+        * State management
+        * Infinite iterators
+    5.3.4 Iterator vs iterable
+        * Iterables have __iter__
+        * Iterators have __next__
+        * Iterators are iterables
+    5.3.5 Itertools module
+        * Infinite iterators
+            - count(start=0, step=1)
+            - cycle(iterable)
+            - repeat(object[, times])
+        * Combinatoric iterators
+            - product(*iterables, repeat=1)
+            - permutations(iterable, r=None)
+            - combinations(iterable, r)
+            - combinations_with_replacement(iterable, r)
+        * Terminating iterators
+            - chain(*iterables)
+            - compress(data, selectors)
+            - dropwhile(predicate, iterable)
+            - filterfalse(predicate, iterable)
+            - groupby(iterable, key=None)
+            - islice(iterable, stop)
+            - starmap(function, iterable)
+            - takewhile(predicate, iterable)
+            - tee(iterable, n=2)
+            - zip_longest(*iterables, fillvalue=None)
+
+MODULE 6: FUNCTIONS
+--------------------
+6.1 Function Basics
+    6.1.1 Function definition with def
+        * def keyword
+        * Function name rules
+        * Parameter list
+        * Colon and indentation
+        * Function body
+    6.1.2 Function naming conventions
+        * lowercase_with_underscores
+        * Verb phrases
+        * Descriptive names
+        * Private functions (_name)
+    6.1.3 Docstrings and documentation
+        * Triple quotes
+        * First line summary
+        * Detailed description
+        * Parameters documentation
+        * Return value documentation
+        * Examples section
+        * PEP 257 conventions
+    6.1.4 Function annotations
+        * Parameter annotations: param: type
+        * Return annotation: -> type
+        * Complex types
+        * Default values with annotations
+        * Runtime access via __annotations__
+    6.1.5 Return statement
+        * Explicit return
+        * Return without value (None)
+        * Multiple return points
+        * Early returns
+    6.1.6 Multiple return values
+        * Tuple packing
+        * Unpacking on call
+        * Named tuples for clarity
+    6.1.7 None as default return
+        * Implicit return
+        * Functions vs procedures
+
+6.2 Function Parameters
+    6.2.1 Positional parameters
+        * Order matters
+        * Required by default
+        * Number must match
+    6.2.2 Default parameters
+        * Syntax: param=default
+        * Evaluated once at definition
+        * Mutable default pitfall
+        * None as sentinel
+    6.2.3 Keyword arguments
+        * Name=value syntax
+        * Any order
+        * Mixing with positional
+    6.2.4 *args (variable positional arguments)
+        * Tuple of arguments
+        * After required parameters
+        * Unpacking with *
+        * Common patterns
+    6.2.5 **kwargs (variable keyword arguments)
+        * Dictionary of arguments
+        * After all other parameters
+        * Unpacking with **
+        * Forwarding arguments
+    6.2.6 Keyword-only arguments
+        * After * or *args
+        * Must use names
+        * Force clarity
+    6.2.7 Positional-only arguments (Python 3.8+)
+        * Before / separator
+        * Cannot use as keyword
+        * API stability
+    6.2.8 Parameter ordering rules
+        * Positional-only (/)
+        * Positional or keyword
+        * *args
+        * Keyword-only
+        * **kwargs
+
+6.3 Scope and Namespaces
+    6.3.1 Local scope
+        * Function variables
+        * Parameter names
+        * Created on call
+        * Destroyed on return
+    6.3.2 Enclosing scope
+        * Nested functions
+        * Closure variables
+        * Free variables
+    6.3.3 Global scope
+        * Module level
+        * Import creates globals
+        * __name__ == "__main__"
+    6.3.4 Built-in scope
+        * Predefined names
+        * Always available
+        * Can be shadowed
+    6.3.5 LEGB rule
+        * Local
+        * Enclosing
+        * Global
+        * Built-in
+        * Resolution order
+    6.3.6 global keyword
+        * Modify global variables
+        * Create global variables
+        * Multiple variables
+    6.3.7 nonlocal keyword
+        * Modify enclosing scope
+        * Cannot create variables
+        * Closure modification
+    6.3.8 Namespace dictionaries
+        * locals() function
+        * globals() function
+        * vars() function
+        * __dict__ attribute
+
+6.4 Advanced Function Concepts
+    6.4.1 First-class functions
+        * Functions as objects
+        * Assign to variables
+        * Pass as arguments
+        * Return from functions
+        * Store in data structures
+    6.4.2 Higher-order functions
+        * Accept function arguments
+        * Return functions
+        * Function factories
+        * Decorators
+    6.4.3 Function attributes
+        * __name__ attribute
+        * __doc__ attribute
+        * __module__ attribute
+        * __annotations__ attribute
+        * Custom attributes
+    6.4.4 Nested functions
+        * Function inside function
+        * Access to enclosing scope
+        * Helper functions
+        * Encapsulation
+    6.4.5 Closures
+        * Capture variables
+        * Persistent state
+        * __closure__ attribute
+        * Free variables
+    6.4.6 Function factories
+        * Create specialized functions
+        * Configuration pattern
+        * Partial application
+    6.4.7 Partial functions (functools.partial)
+        * Fix some arguments
+        * Create new function
+        * Keyword arguments
+        * Use cases
+
+6.5 Lambda Functions
+    6.5.1 Lambda syntax
+        * lambda parameters: expression
+        * Single expression only
+        * Implicit return
+        * Anonymous functions
+    6.5.2 Use cases for lambdas
+        * Short functions
+        * Inline callbacks
+        * Key functions
+        * Higher-order functions
+    6.5.3 Lambdas with map(), filter(), reduce()
+        * map(lambda x: x*2, iterable)
+        * filter(lambda x: x>0, iterable)
+        * reduce(lambda x,y: x+y, iterable)
+    6.5.4 Lambdas in sorting
+        * sorted(items, key=lambda x: x.attribute)
+        * list.sort(key=lambda x: x[1])
+        * Multiple criteria
+    6.5.5 Limitations of lambdas
+        * Single expression
+        * No statements
+        * No annotations
+        * Debugging difficulty
+    6.5.6 Lambda vs def functions
+        * When to use each
+        * Readability
+        * Performance
+        * Testing
+
+6.6 Decorators
+    6.6.1 Decorator syntax (@decorator)
+        * @ symbol
+        * Above function definition
+        * Multiple decorators
+        * Execution order
+    6.6.2 Simple decorators
+        * Function that takes function
+        * Returns new function
+        * Wrapper pattern
+    6.6.3 Decorators with arguments
+        * Decorator factories
+        * Three levels of functions
+        * Configuration pattern
+    6.6.4 Class decorators
+        * Decorate classes
+        * Modify class creation
+        * Add methods/attributes
+    6.6.5 Multiple decorators
+        * Stack from bottom up
+        * Order matters
+        * Composition
+    6.6.6 functools.wraps
+        * Preserve metadata
+        * __name__, __doc__
+        * Good practice
+    6.6.7 Common built-in decorators
+        * @property
+            - Getter method
+            - Setter method
+            - Deleter method
+            - Computed attributes
+        * @staticmethod
+            - No self or cls
+            - Utility functions
+            - Namespace organization
+        * @classmethod
+            - Takes cls parameter
+            - Alternative constructors
+            - Factory methods
+        * @lru_cache
+            - Memoization
+            - Cache size
+            - Cache info
+            - Cache clear
+
+6.7 Generators
+    6.7.1 Generator functions with yield
+        * yield expression
+        * Suspends execution
+        * Resumes on next()
+        * State preservation
+    6.7.2 Generator expressions
+        * (expr for item in iterable)
+        * Lazy evaluation
+        * Memory efficient
+        * Single use
+    6.7.3 yield from statement
+        * Delegate to subgenerator
+        * Flatten nested generators
+        * Exception propagation
+    6.7.4 send(), throw(), close() methods
+        * send(value): Send value to generator
+        * throw(exception): Raise in generator
+        * close(): Stop generator
+        * GeneratorExit exception
+    6.7.5 Generator pipelines
+        * Chain generators
+        * Data processing
+        * Memory efficiency
+    6.7.6 Infinite generators
+        * Never ending sequences
+        * Lazy evaluation
+        * Take what you need
+    6.7.7 Memory efficiency of generators
+        * On-demand computation
+        * No storage of all values
+        * Large data processing
+
+MODULE 7: OBJECT-ORIENTED PROGRAMMING
+--------------------------------------
+7.1 Classes and Objects
+    7.1.1 Class definition
+        * class keyword
+        * Class name (CamelCase)
+        * Inheritance syntax
+        * Class body
+        * Class vs instance
+    7.1.2 Object instantiation
+        * Calling class
+        * __new__ and __init__
+        * Object creation process
+    7.1.3 Instance attributes
+        * Set in __init__
+        * self.attribute
+        * Per-instance data
+        * Dynamic addition
+    7.1.4 Class attributes
+        * Shared across instances
+        * Class namespace
+        * Access via class or instance
+        * Modification effects
+    7.1.5 The self parameter
+        * First parameter convention
+        * Instance reference
+        * Explicit passing
+        * Method calls
+    7.1.6 __init__ constructor
+        * Initialization method
+        * Not true constructor
+        * Parameter passing
+        * Super().__init__()
+    7.1.7 __new__ method
+        * True constructor
+        * Creates instance
+        * cls parameter
+        * Singleton pattern
+
+7.2 Methods
+    7.2.1 Instance methods
+        * Take self parameter
+        * Access instance state
+        * Most common type
+        * Bound methods
+    7.2.2 Class methods (@classmethod)
+        * Take cls parameter
+        * Access class state
+        * Alternative constructors
+        * Factory patterns
+    7.2.3 Static methods (@staticmethod)
+        * No special parameter
+        * Utility functions
+        * Namespace organization
+        * Could be module function
+    7.2.4 Method resolution order (MRO)
+        * Class.__mro__
+        * C3 linearization
+        * Diamond problem
+        * super() and MRO
+    7.2.5 super() function
+        * Proxy object
+        * Next in MRO
+        * Cooperative inheritance
+        * No arguments (Python 3)
+    7.2.6 Method overriding
+        * Replace parent method
+        * Extend parent method
+        * super() for extension
+    7.2.7 Method overloading alternatives
+        * Default arguments
+        * *args and **kwargs
+        * Type checking
+        * functools.singledispatch
+
+7.3 Special Methods (Magic Methods)
+    7.3.1 Object creation and destruction
+        * __new__(cls): Create instance
+        * __init__(self): Initialize instance
+        * __del__(self): Destructor (avoid)
+    7.3.2 String representation
+        * __str__(self): User-friendly string
+        * __repr__(self): Developer string
+        * __format__(self, spec): Format string
+        * __bytes__(self): Bytes representation
+    7.3.3 Comparison methods
+        * __eq__(self, other): Equality (==)
+        * __ne__(self, other): Inequality (!=)
+        * __lt__(self, other): Less than (<)
+        * __le__(self, other): Less or equal (<=)
+        * __gt__(self, other): Greater than (>)
+        * __ge__(self, other): Greater or equal (>=)
+        * __hash__(self): Hash value
+    7.3.4 Arithmetic operators
+        * __add__(self, other): Addition (+)
+        * __sub__(self, other): Subtraction (-)
+        * __mul__(self, other): Multiplication (*)
+        * __truediv__(self, other): Division (/)
+        * __floordiv__(self, other): Floor division (//)
+        * __mod__(self, other): Modulo (%)
+        * __pow__(self, other): Power (**)
+        * __matmul__(self, other): Matrix multiplication (@)
+    7.3.5 Reverse arithmetic operators
+        * __radd__, __rsub__, etc.
+        * When left operand doesn't support
+    7.3.6 In-place operators
+        * __iadd__, __isub__, etc.
+        * Modify self
+        * Return self usually
+    7.3.7 Unary operators
+        * __neg__(self): Negation (-)
+        * __pos__(self): Positive (+)
+        * __abs__(self): Absolute value
+        * __invert__(self): Bitwise NOT (~)
+    7.3.8 Container methods
+        * __len__(self): Length
+        * __getitem__(self, key): Get item
+        * __setitem__(self, key, value): Set item
+        * __delitem__(self, key): Delete item
+        * __contains__(self, item): Membership test
+        * __iter__(self): Get iterator
+        * __next__(self): Next item
+        * __reversed__(self): Reversed iterator
+    7.3.9 Callable objects
+        * __call__(self, *args, **kwargs)
+        * Make instance callable
+        * Function-like objects
+    7.3.10 Context managers
+        * __enter__(self): Enter context
+        * __exit__(self, exc_type, exc_val, exc_tb): Exit context
+        * with statement support
+    7.3.11 Attribute access
+        * __getattr__(self, name): Get missing attribute
+        * __setattr__(self, name, value): Set attribute
+        * __delattr__(self, name): Delete attribute
+        * __getattribute__(self, name): Get any attribute
+        * __dir__(self): Attribute list
+
+7.4 Four Pillars of Object-Oriented Programming
+    7.4.1 Encapsulation (Data Hiding)
+        * Definition and concept
+            - Bundling data and methods together
+            - Restricting direct access to data
+            - Interface vs implementation
+            - Data integrity protection
+        * Implementation in Python
+            - Private attributes (__attribute)
+                - Name mangling mechanism
+                - _ClassName__attribute transformation
+                - Not truly private but discouraged access
+                - Subclass protection
+            - Protected attributes (_attribute)
+                - Convention-based protection
+                - Internal use indication
+                - Not imported with from module import *
+                - Still accessible but discouraged
+            - Public attributes (attribute)
+                - Part of public API
+                - Direct access intended
+                - Documented interface
+        * Properties and access control
+            - @property decorator for getters
+                - Read-only access implementation
+                - Computed properties
+                - Data validation on access
+            - @attribute.setter decorator
+                - Controlled write access
+                - Input validation
+                - Side effect management
+                - Type checking
+            - @attribute.deleter decorator
+                - Controlled deletion
+                - Cleanup operations
+                - Cascade deletions
+        * Benefits of encapsulation
+            - Data integrity maintenance
+            - Implementation flexibility
+            - Interface stability
+            - Debugging and maintenance
+            - Code organization and clarity
+        * Practical examples
+            - Bank account balance protection
+            - Temperature conversion with validation
+            - Configuration management
+            - Database connection handling
+
+    7.4.2 Inheritance (Code Reusability)
+        * Definition and concept
+            - IS-A relationship modeling
+            - Code reuse mechanism
+            - Hierarchical class organization
+            - Specialization and generalization
+        * Single inheritance
+            - One parent class relationship
+                - class Child(Parent):
+                - Method inheritance
+                - Attribute inheritance
+                - Constructor inheritance
+            - Method overriding
+                - Replacing parent methods
+                - Extending parent functionality
+                - super() for parent method access
+                - Polymorphic behavior foundation
+            - super() function usage
+                - Accessing parent class methods
+                - Cooperative inheritance
+                - Method resolution order awareness
+                - Multiple inheritance compatibility
+        * Multiple inheritance
+            - Multiple parent classes
+                - class Child(Parent1, Parent2):
+                - Diamond problem considerations
+                - Method resolution order (MRO)
+                - C3 linearization algorithm
+            - Mixin pattern
+                - Small, focused functionality addition
+                - Composition vs inheritance
+                - Interface segregation
+                - Reusable behavior modules
+            - Abstract base classes (abc module)
+                - Interface definition
+                - @abstractmethod decorator
+                - Template method pattern
+                - Contract enforcement
+        * Inheritance hierarchies
+            - Animal -> Mammal -> Dog example
+            - Vehicle -> Car -> SportsCar example
+            - Exception hierarchy understanding
+            - Design considerations
+        * Benefits and drawbacks
+            - Code reuse advantages
+            - Maintenance implications
+            - Tight coupling concerns
+            - Composition vs inheritance decisions
+
+    7.4.3 Polymorphism (Multiple Forms)
+        * Definition and concept
+            - Same interface, different implementations
+            - Late binding and dynamic dispatch
+            - Type flexibility
+            - Code that works with multiple types
+        * Method polymorphism
+            - Method overriding in inheritance
+                - Different implementations in subclasses
+                - Runtime method resolution
+                - Virtual method concept
+            - Duck typing in Python
+                - "If it walks like a duck..."
+                - Protocol-based programming
+                - No explicit interface declaration needed
+                - Runtime behavior determination
+        * Operator overloading
+            - Magic methods for operators
+                - __add__ for + operator
+                - __eq__ for == operator
+                - __len__ for len() function
+                - __str__ and __repr__ for string conversion
+            - Custom behavior for built-in operations
+                - Mathematical operations
+                - Comparison operations
+                - Container operations
+                - Type conversion operations
+        * Function polymorphism
+            - Generic functions with different types
+                - len() works with strings, lists, dicts
+                - str() converts any object to string
+                - Built-in function flexibility
+            - functools.singledispatch
+                - Type-based function dispatch
+                - Overloading simulation
+                - Clean type-specific implementations
+        * Interface polymorphism
+            - Common method signatures
+                - File-like objects (read, write, close)
+                - Iterator protocol (__iter__, __next__)
+                - Context manager protocol (__enter__, __exit__)
+            - Protocol classes (Python 3.8+)
+                - typing.Protocol
+                - Structural subtyping
+                - Static type checking support
+        * Practical examples
+            - Shape hierarchy with area() method
+            - Payment processing with different providers
+            - Data serialization with multiple formats
+            - Plugin architectures
+
+    7.4.4 Abstraction (Hiding Complexity)
+        * Definition and concept
+            - Hiding implementation details
+            - Focusing on what, not how
+            - Simplified interfaces
+            - Essential feature extraction
+        * Abstract classes and methods
+            - abc.ABC base class
+                - Cannot be instantiated directly
+                - Template for subclasses
+                - Common interface definition
+            - @abstractmethod decorator
+                - Force implementation in subclasses
+                - Interface contract
+                - Documentation of required methods
+            - @abstractproperty (deprecated)
+                - Abstract property definition
+                - Use @property with @abstractmethod
+        * Interface design principles
+            - Minimal interface principle
+                - Expose only necessary methods
+                - Hide internal complexity
+                - Reduce cognitive load
+            - Consistent naming conventions
+                - Predictable method names
+                - Standard patterns
+                - Domain-specific vocabulary
+            - Single responsibility principle
+                - One reason to change
+                - Focused abstractions
+                - Clear boundaries
+        * Abstraction levels
+            - High-level abstractions
+                - Business logic focus
+                - Domain-specific operations
+                - User-oriented interfaces
+            - Low-level abstractions
+                - Technical implementation details
+                - System-specific operations
+                - Performance-critical code
+        * Practical abstraction techniques
+            - Factory patterns
+                - Object creation abstraction
+                - Configuration hiding
+                - Type selection logic
+            - Facade patterns
+                - Simplified interface to complex subsystems
+                - API design
+                - Legacy system wrapping
+            - Template method pattern
+                - Algorithm structure abstraction
+                - Customizable steps
+                - Framework design
+        * Benefits of abstraction
+            - Reduced complexity
+            - Improved maintainability
+            - Enhanced reusability
+            - Better testing capabilities
+            - Clear separation of concerns
+
+7.5 Encapsulation (Detailed)
+    7.5.1 Public attributes
+        * No prefix
+        * Part of API
+        * Direct access
+    7.5.2 Protected attributes (_attribute)
+        * Single underscore prefix
+        * Internal use convention
+        * Still accessible
+        * Not imported with *
+    7.5.3 Private attributes (__attribute)
+        * Double underscore prefix
+        * Name mangling
+        * _ClassName__attribute
+        * Not truly private
+    7.5.4 Name mangling
+        * Avoid conflicts
+        * Subclass protection
+        * Access still possible
+    7.5.5 Property decorators
+        * @property: Getter
+        * @attribute.setter: Setter
+        * @attribute.deleter: Deleter
+        * Computed properties
+    7.5.6 Getters and setters
+        * Property protocol
+        * Validation logic
+        * Lazy computation
+        * Backward compatibility
+    7.5.7 Computed properties
+        * Calculate on access
+        * Cache results
+        * Dependencies
+
+7.6 Advanced OOP Concepts
+    7.6.1 Metaclasses
+        * Classes that create classes
+        * type as default metaclass
+        * __metaclass__ attribute
+        * Custom metaclasses
+        * Use cases rare
+    7.6.2 Class decorators
+        * Modify class after creation
+        * Add methods/attributes
+        * Register classes
+        * Simpler than metaclasses
+    7.6.3 Descriptors
+        * Attribute access protocol
+        * __get__, __set__, __delete__
+        * Property implementation
+        * Reusable attributes
+    7.6.4 __slots__ for memory optimization
+        * Fixed attributes
+        * No __dict__
+        * Memory savings
+        * Faster access
+        * Inheritance complications
+    7.6.5 Dataclasses (Python 3.7+)
+        * @dataclass decorator
+        * Automatic __init__
+        * Automatic __repr__
+        * Automatic comparison
+        * Field() for defaults
+        * Post-init processing
+    7.6.6 Protocol classes (Python 3.8+)
+        * Structural subtyping
+        * Duck typing formalized
+        * No explicit inheritance
+        * Runtime checkable
+    7.6.7 Singleton pattern
+        * One instance only
+        * __new__ override
+        * Module-level instance
+        * Metaclass implementation
+    7.6.8 Factory pattern
+        * Object creation abstraction
+        * Class methods
+        * Separate creation logic
+
+MODULE 8: ERROR HANDLING AND EXCEPTIONS
+----------------------------------------
+8.1 Exception Basics
+    8.1.1 What are exceptions
+        * Error signaling mechanism
+        * Program flow interruption
+        * Object-oriented errors
+        * vs return codes
+    8.1.2 Exception hierarchy
+        * BaseException root
+        * Exception for user exceptions
+        * SystemExit, KeyboardInterrupt
+        * Built-in exception tree
+    8.1.3 Built-in exceptions
+        * ValueError: Invalid value
+        * TypeError: Wrong type
+        * KeyError: Missing key
+        * IndexError: Invalid index
+        * AttributeError: Missing attribute
+        * IOError/OSError: I/O problems
+        * ImportError: Import failure
+        * NameError: Undefined name
+        * ZeroDivisionError: Division by zero
+    8.1.4 Traceback information
+        * Stack trace
+        * File and line numbers
+        * Function names
+        * Reading tracebacks
+    8.1.5 Exception objects
+        * args attribute
+        * __str__ and __repr__
+        * Custom attributes
+        * Exception chaining
+
+8.2 Handling Exceptions
+    8.2.1 try-except blocks
+        * try clause
+        * except clause
+        * Code flow
+        * Minimal try blocks
+    8.2.2 Catching specific exceptions
+        * except ExceptionType:
+        * Most specific first
+        * Inheritance matters
+    8.2.3 Multiple except clauses
+        * Different handlers
+        * Order importance
+        * Fall-through behavior
+    8.2.4 except with multiple exceptions
+        * except (Type1, Type2):
+        * Same handler
+        * Tuple of exceptions
+    8.2.5 Bare except clause (avoid)
+        * Catches everything
+        * Hides bugs
+        * Keyboard interrupt issues
+        * When acceptable
+    8.2.6 else clause
+        * No exception occurred
+        * After try/except
+        * Before finally
+        * Success path
+    8.2.7 finally clause
+        * Always executes
+        * Cleanup code
+        * Resource release
+        * Return behavior
+
+8.3 Raising Exceptions
+    8.3.1 raise statement
+        * raise ExceptionType
+        * raise ExceptionType(message)
+        * raise instance
+    8.3.2 Re-raising exceptions
+        * Bare raise
+        * Preserves traceback
+        * In except block
+    8.3.3 Exception chaining (raise from)
+        * raise NewException from original
+        * __cause__ attribute
+        * Explicit chaining
+        * from None to suppress
+    8.3.4 Creating custom exceptions
+        * Inherit from Exception
+        * Meaningful names
+        * Custom attributes
+        * __init__ and __str__
+    8.3.5 Exception best practices
+        * Specific exceptions
+        * Meaningful messages
+        * Document exceptions
+        * Don't catch everything
+
+8.4 Assertions
+    8.4.1 assert statement
+        * assert condition
+        * assert condition, message
+        * Development tool
+    8.4.2 Assertion error messages
+        * Helpful messages
+        * Debug information
+        * f-strings useful
+    8.4.3 When to use assertions
+        * Internal invariants
+        * Preconditions
+        * Postconditions
+        * Never for validation
+    8.4.4 Disabling assertions (-O flag)
+        * python -O script.py
+        * __debug__ constant
+        * Performance mode
+    8.4.5 Assertions vs exceptions
+        * Assertions for bugs
+        * Exceptions for errors
+        * User input validation
+
+8.5 Context Managers
+    8.5.1 with statement
+        * Automatic cleanup
+        * Exception safety
+        * Resource management
+    8.5.2 Context manager protocol
+        * __enter__ method
+        * __exit__ method
+        * Return values
+        * Exception handling
+    8.5.3 contextlib module
+        * Utilities and helpers
+        * AbstractContextManager
+        * Decorators
+    8.5.4 @contextmanager decorator
+        * Generator-based
+        * yield point
+        * try-finally pattern
+    8.5.5 ExitStack
+        * Dynamic context managers
+        * Multiple contexts
+        * Conditional contexts
+    8.5.6 Creating custom context managers
+        * Class-based
+        * Generator-based
+        * Reentrant managers
+        * Async context managers
+
+MODULE 9: FILE HANDLING AND I/O
+--------------------------------
+9.1 File Operations
+    9.1.1 open() function
+        * open(file, mode='r')
+        * Path specifications
+        * Return file object
+        * Built-in function
+    9.1.2 File modes
+        * 'r': Read (default)
+        * 'w': Write (truncate)
+        * 'a': Append
+        * 'x': Exclusive create
+        * 'b': Binary mode
+        * 't': Text mode (default)
+        * '+': Update (read and write)
+    9.1.3 Reading files
+        * read([size]): Read all or size
+        * readline([size]): Read one line
+        * readlines([hint]): Read all lines to list
+        * Iterating over file objects
+            - for line in file:
+            - Memory efficient
+            - Automatic line ending handling
+    9.1.4 Writing files
+        * write(string): Write string
+        * writelines(lines): Write list of lines
+        * No automatic newlines
+        * Return value (characters written)
+    9.1.5 File position
+        * tell(): Current position
+        * seek(offset, whence): Change position
+            - whence: 0 (start), 1 (current), 2 (end)
+            - Text vs binary mode differences
+    9.1.6 File closing
+        * close() method
+        * Flush buffers
+        * Release resources
+        * Check closed attribute
+
+9.2 File Management
+    9.2.1 with statement for files
+        * Automatic closing
+        * Exception safety
+        * Best practice
+        * Multiple files
+    9.2.2 File attributes
+        * name: File name
+        * mode: Open mode
+        * closed: Is closed
+        * encoding: Text encoding
+        * errors: Error handling
+        * newlines: Newline mode
+    9.2.3 Binary files
+        * bytes and bytearray
+        * No encoding
+        * Raw data
+        * Image, audio, video
+    9.2.4 Text files and encoding
+        * Default encoding
+        * Specify encoding
+        * UTF-8 recommended
+        * Encoding errors
+    9.2.5 Buffering
+        * Line buffering
+        * Full buffering
+        * No buffering
+        * Buffer size
+        * flush() method
+    9.2.6 Line endings
+        * \n on Unix
+        * \r\n on Windows
+        * Universal newlines
+        * newline parameter
+
+9.3 Directory Operations
+    9.3.1 os module basics
+        * Operating system interface
+        * Platform differences
+        * Import os
+    9.3.2 Current working directory
+        * os.getcwd(): Get CWD
+        * os.chdir(path): Change CWD
+        * Context managers for CWD
+    9.3.3 Creating and removing directories
+        * os.mkdir(path): Create directory
+        * os.makedirs(path): Create with parents
+        * os.rmdir(path): Remove empty directory
+        * os.removedirs(path): Remove empty parents
+    9.3.4 Listing directory contents
+        * os.listdir(path): List names
+        * os.scandir(path): Directory entries
+        * Filtering results
+    9.3.5 Walking directory trees
+        * os.walk(top): Generate tree
+        * Top-down vs bottom-up
+        * dirpath, dirnames, filenames
+        * Modifying dirnames
+    9.3.6 Path operations
+        * os.path.exists(path)
+        * os.path.isfile(path)
+        * os.path.isdir(path)
+        * os.path.getsize(path)
+
+9.4 Path Handling
+    9.4.1 os.path module
+        * Path manipulation
+        * Platform-specific
+        * String operations
+    9.4.2 pathlib module (modern approach)
+        * Object-oriented paths
+        * Path class
+        * Platform-independent
+        * Operator overloading
+    9.4.3 Path manipulation
+        * Join: os.path.join() or Path /
+        * Split: os.path.split() or Path.parts
+        * Basename: os.path.basename() or Path.name
+        * Directory: os.path.dirname() or Path.parent
+        * Extension: os.path.splitext() or Path.suffix
+    9.4.4 Path validation
+        * exists(): Path exists
+        * is_file(): Is regular file
+        * is_dir(): Is directory
+        * is_symlink(): Is symbolic link
+    9.4.5 Absolute vs relative paths
+        * os.path.abspath() or Path.absolute()
+        * os.path.relpath() or Path.relative_to()
+        * Path.resolve(): Canonical path
+    9.4.6 Path joins and splits
+        * Safe joining
+        * Component access
+        * Parent navigation
+
+9.5 Advanced I/O
+    9.5.1 Standard streams
+        * sys.stdin: Standard input
+        * sys.stdout: Standard output
+        * sys.stderr: Standard error
+        * Redirection
+        * Piping
+    9.5.2 Redirecting output
+        * File-like objects
+        * contextlib.redirect_stdout()
+        * contextlib.redirect_stderr()
+        * Temporary redirection
+    9.5.3 io module
+        * I/O base classes
+        * Text and binary I/O
+        * Buffered I/O
+        * In-memory streams
+    9.5.4 StringIO and BytesIO
+        * In-memory file objects
+        * String buffer (StringIO)
+        * Bytes buffer (BytesIO)
+        * Testing and temporary data
+    9.5.5 Temporary files (tempfile module)
+        * TemporaryFile(): Auto-delete file
+        * NamedTemporaryFile(): With name
+        * TemporaryDirectory(): Temp directory
+        * mkstemp(): Low-level
+        * Security considerations
+    9.5.6 File locking
+        * Platform differences
+        * fcntl module (Unix)
+        * msvcrt module (Windows)
+        * Third-party solutions
+
+9.6 Serialization
+    9.6.1 pickle module
+        * Python object serialization
+        * Binary format
+        * Most Python objects
+    9.6.2 Pickling and unpickling
+        * pickle.dump(obj, file)
+        * pickle.dumps(obj): To bytes
+        * pickle.load(file)
+        * pickle.loads(bytes): From bytes
+    9.6.3 Pickle protocols
+        * Protocol versions (0-5)
+        * Compatibility
+        * Features and performance
+        * DEFAULT_PROTOCOL
+    9.6.4 Security considerations
+        * Arbitrary code execution
+        * Never unpickle untrusted data
+        * Restricted unpickling
+    9.6.5 JSON handling
+        * Human-readable format
+        * Language independent
+        * Limited types
+    9.6.6 JSON functions
+        * json.dumps(obj): To string
+        * json.loads(string): From string
+        * json.dump(obj, file): To file
+        * json.load(file): From file
+    9.6.7 Custom encoders and decoders
+        * JSONEncoder subclass
+        * default() method
+        * JSONDecoder subclass
+        * object_hook parameter
+    9.6.8 CSV files
+        * Comma-separated values
+        * Tabular data
+        * Excel compatibility
+    9.6.9 CSV reading and writing
+        * csv.reader(file)
+        * csv.writer(file)
+        * csv.DictReader(file)
+        * csv.DictWriter(file, fieldnames)
+    9.6.10 Dialects and formatting
+        * csv.excel dialect
+        * Custom dialects
+        * Delimiter, quoting, escaping
+    9.6.11 XML processing
+        * Structured data
+        * Tree structure
+        * Namespaces
+    9.6.12 ElementTree
+        * Parse XML
+        * Build XML
+        * XPath support
+        * Iteration
+    9.6.13 Configuration files
+        * configparser module
+        * INI file format
+        * Sections and options
+        * Interpolation
+
+MODULE 10: MODULES AND PACKAGES
+--------------------------------
+10.1 Module Basics
+    10.1.1 Creating modules
+        * .py files are modules
+        * Module names
+        * Module namespace
+        * Module initialization
+    10.1.2 Importing modules
+        * import statement
+        * Module search
+        * Compilation (.pyc files)
+        * Module caching
+    10.1.3 Import statement variations
+        * import module
+            - Access with module.name
+            - Namespace separation
+        * from module import item
+            - Direct access to item
+            - Selective import
+        * from module import *
+            - Import all public names
+            - __all__ control
+            - Generally avoid
+        * import module as alias
+            - Rename on import
+            - Avoid conflicts
+    10.1.4 Module search path
+        * sys.path list
+        * Current directory
+        * PYTHONPATH
+        * Standard library
+        * Site-packages
+    10.1.5 PYTHONPATH environment variable
+        * Additional search paths
+        * Platform differences
+        * Development vs production
+
+10.2 Module Management
+    10.2.1 __name__ == "__main__" idiom
+        * Module vs script execution
+        * Test code in modules
+        * Command-line interface
+    10.2.2 Module attributes
+        * __name__: Module name
+        * __file__: Source file
+        * __doc__: Documentation
+        * __dict__: Namespace
+        * __package__: Package name
+    10.2.3 dir() function
+        * List attributes
+        * Module contents
+        * Object attributes
+    10.2.4 help() function
+        * Interactive help
+        * Module documentation
+        * Function signatures
+    10.2.5 Module reloading
+        * importlib.reload(module)
+        * Development use
+        * Limitations
+        * Cache clearing
+    10.2.6 Compiled Python files (.pyc)
+        * Bytecode cache
+        * __pycache__ directory
+        * Version specific
+        * Performance improvement
+
+10.3 Packages
+    10.3.1 Package structure
+        * Directory with __init__.py
+        * Hierarchical modules
+        * Namespace packages
+    10.3.2 __init__.py files
+        * Package initialization
+        * Package namespace
+        * Import configuration
+        * Can be empty
+    10.3.3 Regular packages vs namespace packages
+        * Regular: with __init__.py
+        * Namespace: without __init__.py
+        * PEP 420
+        * Use cases
+    10.3.4 Subpackages
+        * Nested packages
+        * Deep hierarchies
+        * Import paths
+    10.3.5 Relative imports
+        * from . import module
+        * from .. import module
+        * from ..sibling import item
+        * Package context only
+    10.3.6 Absolute imports
+        * from package import module
+        * Full path specification
+        * Recommended approach
+    10.3.7 Package distribution
+        * setup.py
+        * pip installation
+        * wheels
+        * sdist
+
+10.4 Standard Library Overview
+    10.4.1 sys module
+        * System-specific parameters
+        * sys.argv: Command arguments
+        * sys.path: Module search path
+        * sys.exit(): Exit program
+        * sys.version: Python version
+        * sys.platform: Platform identifier
+    10.4.2 os module
+        * Operating system interface
+        * Environment variables
+        * Process management
+        * File operations
+    10.4.3 datetime module
+        * Date and time handling
+        * datetime, date, time classes
+        * timedelta for durations
+        * timezone handling
+        * strftime/strptime
+    10.4.4 math module
+        * Mathematical functions
+        * Constants (pi, e, tau)
+        * Trigonometric functions
+        * Logarithms and exponentials
+        * Special functions
+    10.4.5 random module
+        * Pseudo-random numbers
+        * random(): 0.0 to 1.0
+        * randint(): Integer range
+        * choice(): Random selection
+        * shuffle(): In-place shuffle
+        * seed(): Reproducibility
+    10.4.6 collections module
+        * Specialized containers
+        * Counter, defaultdict
+        * OrderedDict, ChainMap
+        * deque, namedtuple
+    10.4.7 itertools module
+        * Iterator functions
+        * Combinatorics
+        * Infinite iterators
+        * Performance tools
+    10.4.8 functools module
+        * Function tools
+        * partial, reduce
+        * lru_cache, wraps
+        * singledispatch
+
+10.5 Module Development
+    10.5.1 Module documentation
+        * Module docstring
+        * Function docstrings
+        * Class docstrings
+        * Documentation tools
+    10.5.2 Module testing
+        * if __name__ == "__main__"
+        * unittest integration
+        * doctest support
+        * Test modules
+    10.5.3 Module versioning
+        * __version__ attribute
+        * Semantic versioning
+        * Version checking
+    10.5.4 __all__ attribute
+        * Export control
+        * from module import *
+        * Public API definition
+    10.5.5 Private functions and variables
+        * Leading underscore
+        * Not imported with *
+        * Convention not enforcement
+
+MODULE 11: STANDARD LIBRARY DEEP DIVE
+--------------------------------------
+11.1 Built-in Functions and Types
+    11.1.1 Essential built-in functions
+        * Type conversion functions
+            - int(), float(), str(), bool()
+            - complex(), bytes(), bytearray()
+            - list(), tuple(), set(), frozenset(), dict()
+        * Sequence and iteration functions
+            - len(): Length of sequences
+            - range(): Integer sequences
+            - enumerate(): Index-value pairs
+            - zip(): Parallel iteration
+            - reversed(): Reverse iteration
+            - sorted(): Sorted sequences
+        * Functional programming functions
+            - map(): Apply function to iterable
+            - filter(): Filter with predicate
+            - any(): True if any element is true
+            - all(): True if all elements are true
+            - sum(): Sum numeric values
+            - min(), max(): Extremes with key support
+        * Object introspection functions
+            - type(): Object type
+            - isinstance(): Instance checking
+            - hasattr(): Attribute existence
+            - getattr(): Get attribute with default
+            - setattr(): Set attribute dynamically
+            - delattr(): Delete attribute
+            - dir(): Object attributes list
+            - vars(): Object __dict__
+            - id(): Object identity
+        * Input/output functions
+            - print(): Output with formatting
+            - input(): User input
+            - open(): File operations
+        * Utility functions
+            - abs(): Absolute value
+            - round(): Rounding with precision
+            - divmod(): Quotient and remainder
+            - pow(): Power with modulo support
+            - bin(), oct(), hex(): Number base conversion
+            - chr(), ord(): Character conversion
+    11.1.2 Advanced built-in usage
+        * Custom __builtins__ modifications
+        * Built-in shadowing considerations
+        * Performance characteristics
+        * Import-free programming
+
+11.2 String and Text Processing
+    11.2.1 string module
+        * String constants
+            - ascii_letters, ascii_lowercase, ascii_uppercase
+            - digits, hexdigits, octdigits
+            - punctuation, printable, whitespace
+        * Template class
+            - Safe string substitution
+            - Custom delimiters
+            - Identifier patterns
+        * Formatter class
+            - Custom string formatting
+            - Format specification
+    11.2.2 textwrap module
+        * Text formatting utilities
+            - wrap(): Break long lines
+            - fill(): Wrap and join
+            - shorten(): Truncate with placeholder
+            - dedent(): Remove leading whitespace
+            - indent(): Add leading whitespace
+        * TextWrapper class
+            - Customizable wrapping
+            - Width, break characters
+            - Placeholder handling
+    11.2.3 unicodedata module
+        * Unicode character properties
+            - name(): Character name
+            - category(): Character category
+            - decimal(), digit(), numeric(): Numeric values
+        * Normalization forms
+            - normalize(): NFD, NFC, NFKD, NFKC
+            - Combining character handling
+            - Text comparison preparation
+    11.2.4 locale module
+        * Internationalization support
+            - setlocale(): Locale configuration
+            - Format conventions
+            - Currency formatting
+            - Date/time formatting
+        * Locale-aware operations
+            - strcoll(): String comparison
+            - strxfrm(): Sort key generation
+            - Number formatting
+    11.2.5 Advanced text processing
+        * codecs module
+            - Encoding/decoding
+            - Custom codecs
+            - Incremental processing
+        * secrets module
+            - Cryptographically secure random
+            - Token generation
+            - Password generation
+
+11.3 Mathematics and Numbers
+    11.3.1 math module comprehensive
+        * Number theory functions
+            - gcd(): Greatest common divisor
+            - lcm(): Least common multiple (Python 3.9+)
+            - factorial(): Factorial calculation
+            - comb(): Combinations (Python 3.8+)
+            - perm(): Permutations (Python 3.8+)
+        * Power and logarithm functions
+            - pow(): Power with modulo
+            - sqrt(), isqrt(): Square roots
+            - log(), log2(), log10(): Logarithms
+            - log1p(): log(1+x) for small x
+            - exp(), expm1(): Exponentials
+        * Trigonometric functions
+            - sin(), cos(), tan(): Basic trig
+            - asin(), acos(), atan(): Inverse trig
+            - atan2(): Two-argument arctangent
+            - sinh(), cosh(), tanh(): Hyperbolic
+            - asinh(), acosh(), atanh(): Inverse hyperbolic
+        * Angular conversion
+            - degrees(), radians(): Angle conversion
+            - pi, e, tau, inf, nan: Mathematical constants
+        * Utility functions
+            - ceil(), floor(): Rounding
+            - trunc(): Truncation
+            - fabs(): Floating-point absolute
+            - copysign(): Sign copying
+            - fmod(): Floating-point remainder
+            - frexp(), ldexp(): Mantissa/exponent
+            - modf(): Fractional/integer parts
+        * Special functions
+            - erf(), erfc(): Error functions
+            - gamma(), lgamma(): Gamma functions
+        * Testing functions
+            - isfinite(), isinf(), isnan(): Value testing
+            - isclose(): Approximate equality
+    11.3.2 fractions module detailed
+        * Fraction class comprehensive
+            - Construction from integers, floats, strings, decimals
+            - limit_denominator(): Rational approximation
+            - numerator, denominator properties
+            - Mathematical operations
+        * Rational arithmetic precision
+        * Mixed operations with other numeric types
+    11.3.3 decimal module detailed
+        * Decimal arithmetic control
+            - Context settings (precision, rounding)
+            - Local contexts with localcontext()
+            - Signal handling (traps, flags)
+        * Rounding modes
+            - ROUND_CEILING, ROUND_DOWN, ROUND_FLOOR
+            - ROUND_HALF_DOWN, ROUND_HALF_EVEN, ROUND_HALF_UP
+            - ROUND_UP, ROUND_05UP
+        * Financial calculations
+            - Currency arithmetic
+            - Exact decimal representation
+            - Avoiding floating-point errors
+    11.3.4 cmath module
+        * Complex number operations
+            - All math functions for complex numbers
+            - phase(): Complex phase
+            - polar(), rect(): Coordinate conversion
+        * Complex constants
+            - pi, e, tau: Complex versions
+            - inf, infj, nan, nanj: Special values
+        * Complex-specific functions
+            - isfinite(), isinf(), isnan(): Complex testing
+            - isclose(): Complex approximate equality
+
+11.4 Data Structures and Algorithms
+    11.4.1 collections module detailed
+        * namedtuple comprehensive
+            - Factory function usage
+            - Field names and defaults
+            - _make(), _asdict(), _replace() methods
+            - _fields, _field_defaults attributes
+            - Inheritance and methods addition
+        * deque comprehensive
+            - Double-ended operations
+            - maxlen for bounded deques
+            - rotate(), reverse() operations
+            - Thread-safe operations
+            - Memory efficiency
+        * Counter comprehensive
+            - Counting and frequency analysis
+            - most_common(): Top elements
+            - elements(): Iterator over counts
+            - subtract(): Count subtraction
+            - Arithmetic operations (+, -, &, |)
+        * defaultdict comprehensive
+            - Factory function patterns
+            - Missing key handling
+            - Common use cases (grouping, trees)
+        * OrderedDict comprehensive
+            - Order-preserving dictionary
+            - move_to_end(): Reordering
+            - LRU cache implementation
+            - popitem(): LIFO vs FIFO
+        * ChainMap comprehensive
+            - Multiple mapping view
+            - Dynamic scope simulation
+            - Configuration hierarchies
+            - maps attribute manipulation
+        * UserDict, UserList, UserString
+            - Customizable containers
+            - Subclassing built-ins alternatives
+            - Method customization
+    11.4.2 array module detailed
+        * Typed arrays for efficiency
+            - Type codes and sizes
+            - Memory layout control
+            - Buffer protocol support
+        * Array operations
+            - append(), extend(), insert()
+            - pop(), remove(), index()
+            - reverse(), count()
+            - tolist(), tobytes(), frombytes()
+        * Performance comparisons with lists
+        * Use cases for typed arrays
+    11.4.3 heapq module comprehensive
+        * Heap data structure operations
+            - heappush(), heappop(): Basic operations
+            - heappushpop(), heapreplace(): Efficient combined operations
+            - heapify(): In-place heap creation
+        * Heap algorithms
+            - nlargest(), nsmallest(): Top-k elements
+            - Custom comparison with key parameter
+        * Priority queue implementations
+            - Task scheduling with priorities
+            - Dijkstra's algorithm support
+        * Heap properties and invariants
+    11.4.4 bisect module comprehensive
+        * Binary search and insertion
+            - bisect_left(), bisect_right(): Search positions
+            - insort_left(), insort_right(): Sorted insertion
+        * Maintaining sorted sequences
+            - Performance characteristics
+            - Custom key functions
+        * Applications
+            - Grade boundaries
+            - Breakpoint tables
+            - Efficient sorted collections
+
+MODULE 12: ADVANCED PYTHON FEATURES
+------------------------------------
+12.1 Metaclasses and Advanced Class Creation
+    12.1.1 Metaclass fundamentals
+        * What are metaclasses
+            - Classes that create classes
+            - type as the default metaclass
+            - Meta-programming concept
+            - When metaclasses are useful (rarely)
+        * type() as metaclass
+            - Dynamic class creation
+            - type(name, bases, dict)
+            - Attribute dictionary specification
+            - Method injection
+        * Custom metaclasses
+            - Inheriting from type
+            - __new__ method customization
+            - __init__ method customization
+            - Class creation interception
+        * Metaclass specification
+            - __metaclass__ attribute (Python 2)
+            - metaclass parameter in class definition
+            - Inheritance of metaclasses
+        * Common metaclass patterns
+            - Singleton enforcement
+            - Attribute validation
+            - Method interception
+            - Registration systems
+        * Alternatives to metaclasses
+            - Class decorators
+            - __init_subclass__ hook
+            - Descriptors
+            - When not to use metaclasses
+    12.1.2 __init_subclass__ hook
+        * Subclass customization
+            - Called on subclass creation
+            - Parameter passing
+            - Validation and setup
+        * vs metaclass comparison
+            - Simpler syntax
+            - Limited scope
+            - Better readability
+    12.1.3 Class decorators advanced
+        * Class modification
+            - Adding methods and attributes
+            - Wrapping methods
+            - Registration patterns
+        * Decorator factories for classes
+            - Parameterized class decoration
+            - Configuration-based modification
+        * Multiple class decorators
+            - Composition effects
+            - Order dependency
+    12.1.4 Dynamic class creation patterns
+        * Factory functions for classes
+            - Configuration-driven creation
+            - Template-based classes
+            - Runtime class generation
+        * Class modification at runtime
+            - Method injection
+            - Attribute manipulation
+            - Inheritance modification
+
+12.2 Descriptors and Properties
+    12.2.1 Descriptor protocol comprehensive
+        * Descriptor methods
+            - __get__(self, obj, type=None)
+            - __set__(self, obj, value)
+            - __delete__(self, obj)
+            - __set_name__(self, owner, name) [Python 3.6+]
+        * Data vs non-data descriptors
+            - Non-data: only __get__
+            - Data: __get__ + (__set__ or __delete__)
+            - Precedence in attribute access
+        * Descriptor lookup order
+            - Instance __dict__
+            - Class __dict__ (data descriptors)
+            - Instance __dict__ (non-data descriptors)
+            - Class __dict__ (non-data descriptors)
+            - __getattr__ if defined
+    12.2.2 Property implementation details
+        * property() built-in function
+            - fget, fset, fdel, doc parameters
+            - Decorator syntax
+            - Method chaining (@prop.setter)
+        * Read-only properties
+            - Only getter defined
+            - Computed attributes
+            - Lazy evaluation
+        * Write-only properties (rare)
+            - Only setter defined
+            - Configuration attributes
+        * Property deletion
+            - @prop.deleter decorator
+            - Cleanup operations
+            - Restricted deletion
+        * Property documentation
+            - Docstring specification
+            - help() integration
+            - IDE support
+    12.2.3 Custom descriptors
+        * Validation descriptors
+            - Type checking
+            - Range validation
+            - Format validation
+        * Caching descriptors
+            - Lazy evaluation
+            - Expensive computation
+            - Cache invalidation
+        * Logging descriptors
+            - Access tracking
+            - Audit trails
+            - Debug information
+        * Transformation descriptors
+            - Data conversion
+            - Encoding/decoding
+            - Format transformation
+    12.2.4 Advanced descriptor patterns
+        * Method-like descriptors
+            - functools.cached_property
+            - functools.lru_cache on methods
+        * Class-level descriptors
+            - Shared descriptor instances
+            - Per-class vs per-instance storage
+        * Descriptor hierarchies
+            - Inheritance in descriptors
+            - Composition patterns
+            - Mixin descriptors
+
+12.3 Context Managers Advanced
+    12.3.1 Context manager protocol detailed
+        * __enter__ method
+            - Setup operations
+            - Resource acquisition
+            - Return value usage
+            - Exception handling
+        * __exit__ method
+            - Cleanup operations
+            - Exception information parameters
+            - Exception suppression
+            - Return value significance
+        * Exception handling in context managers
+            - Exception type, value, traceback
+            - Exception chaining
+            - Suppression vs propagation
+    12.3.2 contextlib module comprehensive
+        * @contextmanager decorator
+            - Generator-based context managers
+            - yield point semantics
+            - Exception handling with try-finally
+            - Multiple context managers
+        * ExitStack
+            - Dynamic context manager management
+            - Conditional context managers
+            - Callback registration
+            - Exception handling
+        * contextlib utilities
+            - nullcontext(): No-op context manager
+            - closing(): Automatic resource closing
+            - suppress(): Exception suppression
+            - redirect_stdout(), redirect_stderr()
+        * AsyncExitStack (for async context managers)
+            - Asynchronous context management
+            - Async generator support
+            - Error handling in async contexts
+    12.3.3 Reentrant context managers
+        * Multiple entry support
+            - State management
+            - Nesting behavior
+            - Use cases and examples
+    12.3.4 Context manager patterns
+        * Database transactions
+            - Commit/rollback semantics
+            - Nested transactions
+            - Connection management
+        * File operations
+            - Automatic file closing
+            - Multiple file handling
+            - Temporary files
+        * Thread synchronization
+            - Lock acquisition/release
+            - Timeout handling
+            - Deadlock prevention
+        * State preservation
+            - Configuration changes
+            - Environment modifications
+            - Rollback mechanisms
+
+12.4 Decorators Advanced
+    12.4.1 Decorator implementation patterns
+        * Closure-based decorators
+            - State preservation
+            - Configuration parameters
+            - Multiple wrapper levels
+        * Class-based decorators
+            - __init__ for configuration
+            - __call__ for wrapping
+            - State management
+        * functools.wraps usage
+            - Metadata preservation
+            - Function signature
+            - Documentation strings
+            - Custom attributes
+    12.4.2 Parameterized decorators
+        * Decorator factories
+            - Configuration parameters
+            - Runtime customization
+            - Multiple decorator instances
+        * Flexible parameter handling
+            - Optional parameters
+            - Keyword arguments
+            - Default values
+    12.4.3 Multiple decorators
+        * Decorator stacking
+            - Application order
+            - Composition effects
+            - Performance implications
+        * Decorator interaction
+            - Shared state
+            - Parameter passing
+            - Conflict resolution
+    12.4.4 Advanced decorator use cases
+        * Caching and memoization
+            - functools.lru_cache
+            - Custom cache implementations
+            - Cache invalidation
+        * Rate limiting
+            - Request throttling
+            - Time-based restrictions
+            - User-specific limits
+        * Validation decorators
+            - Type checking
+            - Parameter validation
+            - Return value validation
+        * Logging and monitoring
+            - Function call logging
+            - Performance monitoring
+            - Error tracking
+        * Authentication and authorization
+            - User verification
+            - Permission checking
+            - Role-based access
+    12.4.5 Decorator testing and debugging
+        * Testing decorated functions
+            - Access to original function
+            - Mock and patch strategies
+            - Decorator isolation
+        * Debugging decorated code
+            - Stack trace interpretation
+            - Stepping through decorators
+            - State inspection
+
+MODULE 13: CONCURRENCY AND PARALLELISM
+---------------------------------------
+13.1 Threading Fundamentals
+    13.1.1 threading module comprehensive
+        * Thread class
+            - Thread(target, args, kwargs)
+            - start(), join(), is_alive()
+            - daemon threads
+            - Thread naming and identification
+        * Thread function approach
+            - Function-based threading
+            - Parameter passing
+            - Return value handling
+        * Thread subclassing
+            - Custom Thread classes
+            - run() method override
+            - Initialization and cleanup
+    13.1.2 Thread synchronization
+        * Lock objects
+            - acquire(), release() methods
+            - with statement support
+            - Blocking vs non-blocking
+            - Timeout specifications
+        * RLock (Reentrant Lock)
+            - Multiple acquisitions by same thread
+            - Recursion safety
+            - Performance overhead
+        * Semaphore
+            - Resource counting
+            - Bounded access
+            - acquire(), release() semantics
+        * Condition variables
+            - wait(), notify(), notify_all()
+            - Predicate-based waiting
+            - Complex synchronization patterns
+        * Event objects
+            - set(), clear(), wait()
+            - Binary signaling
+            - Thread coordination
+        * Barrier objects
+            - Multi-thread synchronization
+            - wait() for all threads
+            - Broken barriers
+    13.1.3 Thread communication
+        * queue module
+            - Queue: Thread-safe FIFO
+            - LifoQueue: Thread-safe LIFO
+            - PriorityQueue: Priority-based
+            - put(), get() with blocking
+            - task_done(), join() patterns
+        * Shared memory considerations
+            - Global variables
+            - Mutable objects
+            - Race conditions
+        * threading.local()
+            - Thread-local storage
+            - Per-thread data
+            - Context isolation
+    13.1.4 Thread pools
+        * concurrent.futures.ThreadPoolExecutor
+            - Worker thread management
+            - submit(), map() methods
+            - Future objects
+            - Context manager usage
+        * Thread pool sizing
+            - Optimal thread count
+            - I/O vs CPU bound tasks
+            - Resource limitations
+
+13.2 Multiprocessing
+    13.2.1 Process-based parallelism
+        * multiprocessing.Process
+            - Process creation and management
+            - start(), join(), terminate()
+            - Process IDs and status
+            - Daemon processes
+        * Process communication
+            - multiprocessing.Queue
+            - multiprocessing.Pipe
+            - Shared memory objects
+            - Manager objects
+        * Process synchronization
+            - multiprocessing.Lock
+            - multiprocessing.Semaphore
+            - multiprocessing.Event
+            - Cross-process coordination
+    13.2.2 Shared memory and data
+        * multiprocessing.Value
+            - Shared scalar values
+            - Type specification
+            - Lock protection
+        * multiprocessing.Array
+            - Shared arrays
+            - Type codes
+            - Raw arrays for performance
+        * Manager objects
+            - Shared lists and dictionaries
+            - Namespace objects
+            - Network accessibility
+        * Memory mapping
+            - mmap module
+            - File-based sharing
+            - Anonymous mapping
+    13.2.3 Process pools
+        * multiprocessing.Pool
+            - Worker process management
+            - map(), imap(), starmap()
+            - apply(), apply_async()
+            - Context manager support
+        * ProcessPoolExecutor
+            - Futures-based interface
+            - Exception handling
+            - Resource cleanup
+        * Pool sizing strategies
+            - CPU count considerations
+            - Memory usage
+            - Task characteristics
+    13.2.4 Multiprocessing patterns
+        * Producer-consumer
+            - Queue-based communication
+            - Multiple producers/consumers
+            - Flow control
+        * Map-reduce
+            - Data partitioning
+            - Parallel processing
+            - Result aggregation
+        * Pipeline processing
+            - Stage-based processing
+            - Buffer management
+            - Error propagation
+
+13.3 Asynchronous Programming (asyncio)
+    13.3.1 asyncio fundamentals
+        * Event loop concept
+            - Single-threaded concurrency
+            - Non-blocking operations
+            - Cooperative multitasking
+        * Coroutines
+            - async def syntax
+            - await expressions
+            - Coroutine objects
+            - Native vs generator-based
+        * async/await syntax
+            - Asynchronous function definition
+            - Awaiting coroutines
+            - Exception handling
+            - Return values
+    13.3.2 asyncio event loop
+        * Event loop management
+            - asyncio.get_event_loop()
+            - asyncio.new_event_loop()
+            - asyncio.set_event_loop()
+            - Loop policies
+        * Running coroutines
+            - asyncio.run() (Python 3.7+)
+            - loop.run_until_complete()
+            - loop.run_forever()
+            - Graceful shutdown
+        * Task scheduling
+            - asyncio.create_task()
+            - asyncio.ensure_future()
+            - Task cancellation
+            - Task results and exceptions
+    13.3.3 Asynchronous I/O operations
+        * File operations
+            - aiofiles library
+            - Asynchronous file reading/writing
+            - Context managers
+        * Network operations
+            - HTTP clients (aiohttp)
+            - TCP/UDP sockets
+            - Server creation
+        * Database operations
+            - Async database drivers
+            - Connection pooling
+            - Transaction management
+    13.3.4 Synchronization primitives
+        * asyncio.Lock
+            - Asynchronous locking
+            - Context manager support
+            - Deadlock prevention
+        * asyncio.Semaphore
+            - Resource limiting
+            - Async acquisition
+            - Connection limits
+        * asyncio.Event
+            - Async event signaling
+            - Coroutine coordination
+            - State management
+        * asyncio.Condition
+            - Complex synchronization
+            - Predicate waiting
+            - Notification patterns
+        * asyncio.Queue
+            - Async producer-consumer
+            - Backpressure handling
+            - Priority queues
+    13.3.5 Advanced asyncio patterns
+        * Concurrent execution
+            - asyncio.gather()
+            - asyncio.wait()
+            - as_completed()
+            - Exception handling
+        * Timeouts and cancellation
+            - asyncio.wait_for()
+            - asyncio.timeout() [Python 3.11+]
+            - CancelledError handling
+        * Streaming
+            - AsyncGenerator
+            - Stream processing
+            - Backpressure management
+
+13.4 Concurrent.futures
+    13.4.1 Executor framework
+        * ThreadPoolExecutor detailed
+            - Thread pool management
+            - Worker thread lifecycle
+            - Queue management
+            - Exception propagation
+        * ProcessPoolExecutor detailed
+            - Process pool management
+            - Serialization requirements
+            - Shared state limitations
+            - Resource cleanup
+    13.4.2 Future objects
+        * Future methods
+            - result(): Get result with timeout
+            - exception(): Get exception
+            - done(): Completion check
+            - cancel(): Cancellation attempt
+            - add_done_callback(): Completion callbacks
+        * Future states
+            - Pending, running, cancelled, finished
+            - State transitions
+            - Exception vs result
+    13.4.3 Executor patterns
+        * submit() vs map()
+            - Individual task submission
+            - Batch processing
+            - Result handling differences
+        * as_completed()
+            - Process results as available
+            - Timeout handling
+            - Exception management
+        * wait()
+            - Block until completion
+            - Partial completion
+            - Timeout specifications
+    13.4.4 Performance considerations
+        * Task granularity
+            - Fine vs coarse tasks
+            - Overhead minimization
+            - Load balancing
+        * Resource management
+            - Memory usage
+            - File handles
+            - Network connections
+        * Error handling strategies
+            - Exception propagation
+            - Partial failure handling
+            - Recovery mechanisms
+
