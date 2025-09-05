@@ -1,0 +1,1358 @@
+NUMPY NUMERICAL COMPUTING - COMPREHENSIVE DETAILED SYLLABUS
+=============================================================
+
+MODULE 1: NUMPY FUNDAMENTALS
+------------------------------
+1.1 Introduction to NumPy
+    - What is NumPy
+        * Numerical Python library
+        * Foundation for scientific computing
+        * Core of Python data science ecosystem
+        * Written in C for performance
+        * N-dimensional array object (ndarray)
+        * Created by Travis Oliphant (2005)
+    - Installation and setup
+        * pip install numpy
+        * conda install numpy
+        * Import convention: import numpy as np
+        * Version checking: np.__version__
+        * Configuration: np.show_config()
+    - NumPy vs Python lists
+        * Memory efficiency
+            - Homogeneous data types
+            - Contiguous memory layout
+            - Fixed-size elements
+        * Performance benefits
+            - Vectorized operations
+            - C-level loops
+            - Broadcasting
+            - No Python object overhead
+        * Functionality advantages
+            - Mathematical operations
+            - Broadcasting
+            - Linear algebra
+            - Random number generation
+    - NumPy ecosystem
+        * SciPy: Scientific computing
+        * Pandas: Data analysis
+        * Matplotlib: Plotting
+        * Scikit-learn: Machine learning
+        * TensorFlow/PyTorch: Deep learning
+
+1.2 N-dimensional Arrays (ndarray)
+    - Array fundamentals
+        * Homogeneous data container
+        * Fixed size at creation
+        * Elements indexed by tuple of integers
+        * Efficient storage and computation
+    - Array attributes
+        * ndarray.ndim: Number of dimensions
+        * ndarray.shape: Array dimensions tuple
+        * ndarray.size: Total number of elements
+        * ndarray.dtype: Data type of elements
+        * ndarray.itemsize: Size of each element in bytes
+        * ndarray.nbytes: Total bytes consumed
+        * ndarray.flags: Memory layout information
+        * ndarray.flat: 1D iterator over array
+        * ndarray.T: Transposed array
+    - Array creation methods
+        * From Python sequences
+            - np.array([1, 2, 3]): Basic creation
+            - np.array([[1, 2], [3, 4]]): 2D array
+            - dtype parameter for type specification
+            - copy parameter for data copying
+        * Intrinsic array creation
+            - np.zeros(shape): Array filled with zeros
+            - np.ones(shape): Array filled with ones
+            - np.empty(shape): Uninitialized array
+            - np.full(shape, fill_value): Array with constant value
+            - np.eye(N): Identity matrix
+            - np.identity(N): Identity matrix (square)
+        * Range creation
+            - np.arange(start, stop, step): Evenly spaced values
+            - np.linspace(start, stop, num): Linear spacing
+            - np.logspace(start, stop, num): Logarithmic spacing
+            - np.geomspace(start, stop, num): Geometric spacing
+        * Random array creation
+            - np.random.random(shape): Random values [0, 1)
+            - np.random.randint(low, high, size): Random integers
+            - np.random.normal(loc, scale, size): Normal distribution
+            - np.random.uniform(low, high, size): Uniform distribution
+
+1.3 Data Types (dtype)
+    - Numeric data types
+        * Integer types
+            - np.int8, np.int16, np.int32, np.int64: Signed integers
+            - np.uint8, np.uint16, np.uint32, np.uint64: Unsigned integers
+            - Platform-dependent: np.int_, np.intc, np.intp
+        * Floating-point types
+            - np.float16: Half precision
+            - np.float32: Single precision
+            - np.float64: Double precision (default)
+            - np.longdouble: Extended precision
+        * Complex types
+            - np.complex64: Complex with float32 components
+            - np.complex128: Complex with float64 components
+            - np.clongdouble: Complex with extended precision
+    - Other data types
+        * Boolean: np.bool_
+        * String types
+            - np.str_: Variable-length Unicode strings
+            - np.bytes_: Fixed-length byte strings
+        * Datetime types
+            - np.datetime64: Date and time
+            - np.timedelta64: Time differences
+        * Object type: np.object_ (Python objects)
+    - Type specification and conversion
+        * dtype parameter in array creation
+        * astype() method for conversion
+            - Array copying behavior
+            - Type validation
+            - Error handling
+        * Type promotion in operations
+            - Automatic type casting
+            - Safe vs unsafe casting
+            - Promotion hierarchy
+    - Custom data types
+        * Structured arrays
+            - Field names and types
+            - Record arrays
+            - Compound data types
+        * dtype creation
+            - Dictionary specification
+            - List of tuples format
+            - String format codes
+
+MODULE 2: ARRAY OPERATIONS AND MANIPULATION
+--------------------------------------------
+2.1 Indexing and Slicing
+    - Basic indexing
+        * Single element access: arr[index]
+            - Positive indexing (0-based)
+            - Negative indexing (from end)
+            - Multi-dimensional indexing: arr[i, j, k]
+        * Slicing syntax: arr[start:stop:step]
+            - Default values (None)
+            - Negative indices
+            - Step specification
+            - Empty slices
+    - Advanced indexing
+        * Boolean indexing
+            - Boolean array masks: arr[arr > 5]
+            - Conditional selection
+            - Multiple conditions with &, |, ~
+            - Boolean array broadcasting
+        * Fancy indexing
+            - Integer array indexing: arr[[1, 3, 5]]
+            - Multi-dimensional fancy indexing
+            - Mixing boolean and fancy indexing
+            - Index arrays with different shapes
+    - Multi-dimensional indexing
+        * Indexing along specific axes
+            - arr[:, 0]: All rows, first column
+            - arr[0, :]: First row, all columns
+            - arr[::2, ::2]: Every other element
+        * Ellipsis (...) notation
+            - arr[..., -1]: Last element along last axis
+            - Placeholder for multiple colons
+        * newaxis for dimension addition
+            - arr[:, np.newaxis]: Add dimension
+            - arr[np.newaxis, :]: Add dimension at beginning
+    - Indexing with arrays
+        * Integer array indexing
+            - Select multiple elements
+            - Reorder elements
+            - Duplicate selections
+        * Multi-dimensional integer indexing
+            - Row and column index arrays
+            - Broadcasting in index arrays
+        * Mixed indexing types
+            - Combining slices, integers, and arrays
+            - Order of operations
+
+2.2 Array Manipulation
+    - Shape manipulation
+        * reshape(): Change array shape
+            - New shape specification
+            - -1 for automatic dimension
+            - C vs Fortran order
+            - View vs copy behavior
+        * resize(): Change array size
+            - In-place vs new array
+            - Padding with repeated values
+            - Truncation behavior
+        * flatten(): Flatten to 1D
+            - Always returns copy
+            - Order specification (C, F, A, K)
+        * ravel(): Flatten to 1D
+            - Returns view when possible
+            - Order specification
+            - Memory efficiency
+    - Array joining and splitting
+        * Concatenation
+            - np.concatenate(): Join arrays
+            - axis parameter
+            - Arrays must have compatible shapes
+        * Stacking
+            - np.stack(): Join arrays along new axis
+            - np.vstack() / np.row_stack(): Vertical stacking
+            - np.hstack() / np.column_stack(): Horizontal stacking
+            - np.dstack(): Depth stacking
+        * Splitting
+            - np.split(): Split into sub-arrays
+            - np.vsplit(): Vertical split
+            - np.hsplit(): Horizontal split
+            - np.dsplit(): Depth split
+            - np.array_split(): Split with unequal sections
+    - Array transposition
+        * transpose(): Reorder axes
+            - Axes parameter for custom ordering
+            - Multi-dimensional transposition
+        * swapaxes(): Swap two axes
+        * moveaxis(): Move axes to new positions
+        * rollaxis(): Roll axis to new position
+    - Array copying
+        * View vs copy semantics
+            - Shallow copy (view): shares data
+            - Deep copy: independent data
+        * copy() method: Explicit copy creation
+        * View creation operations
+            - Slicing creates views
+            - reshape() usually creates views
+            - Boolean indexing creates copies
+
+2.3 Universal Functions (ufuncs)
+    - Ufunc fundamentals
+        * Element-wise operations
+        * Vectorized implementations
+        * Broadcasting support
+        * Type promotion
+        * Output array specification
+    - Arithmetic ufuncs
+        * Basic arithmetic
+            - np.add(), np.subtract(), np.multiply(), np.divide()
+            - np.power(), np.sqrt(), np.square()
+            - np.reciprocal(), np.negative()
+        * Division operations
+            - np.true_divide(): Python 3 division
+            - np.floor_divide(): Floor division
+            - np.mod(): Remainder
+            - np.divmod(): Quotient and remainder
+        * Comparison ufuncs
+            - np.equal(), np.not_equal()
+            - np.less(), np.less_equal()
+            - np.greater(), np.greater_equal()
+            - np.logical_and(), np.logical_or(), np.logical_not()
+    - Mathematical ufuncs
+        * Trigonometric functions
+            - np.sin(), np.cos(), np.tan()
+            - np.arcsin(), np.arccos(), np.arctan()
+            - np.sinh(), np.cosh(), np.tanh()
+            - np.degrees(), np.radians()
+        * Exponential and logarithmic
+            - np.exp(), np.exp2(), np.expm1()
+            - np.log(), np.log2(), np.log10(), np.log1p()
+            - Natural vs common logarithms
+        * Rounding and absolute values
+            - np.round(), np.floor(), np.ceil()
+            - np.trunc(), np.fix()
+            - np.abs(), np.absolute()
+            - np.sign()
+    - Ufunc methods and properties
+        * reduce(): Apply operation along axis
+            - Sum all elements: np.add.reduce()
+            - Cumulative operations
+            - Axis specification
+        * accumulate(): Cumulative operation
+            - Running totals, products
+            - Intermediate results
+        * outer(): Outer product operation
+            - All combinations of elements
+            - Higher-dimensional operations
+        * at(): Unbuffered in-place operation
+            - Repeated index handling
+            - Thread-safe operations
+
+MODULE 3: MATHEMATICAL OPERATIONS
+----------------------------------
+3.1 Basic Mathematics
+    - Arithmetic operations
+        * Element-wise operations
+            - Addition: arr1 + arr2 or np.add(arr1, arr2)
+            - Subtraction: arr1 - arr2 or np.subtract(arr1, arr2)
+            - Multiplication: arr1 * arr2 or np.multiply(arr1, arr2)
+            - Division: arr1 / arr2 or np.divide(arr1, arr2)
+        * Scalar operations
+            - Broadcasting with scalars
+            - Type promotion rules
+            - In-place operations (+=, -=, *=, /=)
+        * Matrix operations
+            - np.matmul() or @ operator: Matrix multiplication
+            - np.dot(): Dot product
+            - Difference between * and @
+        * Power operations
+            - arr ** power or np.power(arr, power)
+            - np.square(): Efficient squaring
+            - np.sqrt(): Square root
+    - Rounding operations
+        * Basic rounding
+            - np.round(): Round to nearest
+            - Decimals parameter for precision
+            - Even rounding for ties
+        * Directed rounding
+            - np.floor(): Round down
+            - np.ceil(): Round up
+            - np.trunc(): Truncate towards zero
+            - np.fix(): Fix towards zero
+        * Modular arithmetic
+            - np.mod() or %: Remainder
+            - np.remainder(): Same as mod
+            - np.fmod(): C-style remainder
+            - np.divmod(): Quotient and remainder
+    - Comparison operations
+        * Element-wise comparisons
+            - ==, !=, <, <=, >, >=
+            - Returns boolean arrays
+            - NaN comparison behavior
+        * Array comparison functions
+            - np.array_equal(): Array equality
+            - np.array_equiv(): Broadcasting equality
+            - np.allclose(): Approximate equality
+            - Tolerance parameters (rtol, atol)
+        * Logical operations
+            - np.logical_and(), np.logical_or()
+            - np.logical_not(), np.logical_xor()
+            - Short-circuit evaluation absence
+
+3.2 Statistical Functions
+    - Descriptive statistics
+        * Central tendency
+            - np.mean(): Arithmetic mean
+            - np.median(): Middle value
+            - np.average(): Weighted average
+            - axis parameter for specific dimensions
+        * Dispersion measures
+            - np.std(): Standard deviation
+            - np.var(): Variance
+            - ddof parameter (degrees of freedom)
+            - np.ptp(): Peak-to-peak (range)
+        * Order statistics
+            - np.min(), np.max(): Extremes
+            - np.argmin(), np.argmax(): Indices of extremes
+            - np.percentile(): Percentile calculation
+            - np.quantile(): Quantile calculation
+            - interpolation methods
+    - Aggregation functions
+        * Sum and product
+            - np.sum(): Sum of elements
+            - np.prod(): Product of elements
+            - np.cumsum(): Cumulative sum
+            - np.cumprod(): Cumulative product
+            - axis and keepdims parameters
+        * Counting functions
+            - np.count_nonzero(): Count non-zero elements
+            - np.bincount(): Count occurrences of values
+            - np.unique(): Unique values and counts
+            - return_counts, return_index parameters
+        * Logical aggregations
+            - np.all(): Test if all elements true
+            - np.any(): Test if any element true
+            - axis parameter for dimension-specific tests
+    - Statistical functions
+        * Correlation and covariance
+            - np.corrcoef(): Correlation coefficient
+            - np.cov(): Covariance matrix
+            - rowvar parameter for variable orientation
+        * Histograms and binning
+            - np.histogram(): Compute histogram
+            - np.histogram2d(): 2D histogram
+            - np.histogramdd(): N-dimensional histogram
+            - bin specification methods
+        * Statistical tests
+            - Basic correlation
+            - Distribution fitting preparation
+            - Integration with scipy.stats
+
+3.3 Linear Algebra
+    - Basic linear algebra operations
+        * Vector operations
+            - np.dot(): Dot product
+            - np.inner(): Inner product
+            - np.outer(): Outer product
+            - np.cross(): Cross product
+            - Vector norms
+        * Matrix operations
+            - Matrix multiplication: @ or np.matmul()
+            - Matrix power: np.linalg.matrix_power()
+            - Matrix transpose: .T or np.transpose()
+            - Trace: np.trace()
+        * Matrix decomposition
+            - np.linalg.svd(): Singular Value Decomposition
+            - np.linalg.qr(): QR decomposition
+            - np.linalg.cholesky(): Cholesky decomposition
+            - np.linalg.eig(): Eigenvalue decomposition
+    - Linear systems
+        * Solving linear equations
+            - np.linalg.solve(): Solve Ax = b
+            - np.linalg.lstsq(): Least-squares solution
+            - Over-determined and under-determined systems
+        * Matrix inversion
+            - np.linalg.inv(): Matrix inverse
+            - np.linalg.pinv(): Pseudo-inverse
+            - Singular matrix handling
+        * Matrix properties
+            - np.linalg.det(): Determinant
+            - np.linalg.rank(): Matrix rank
+            - np.linalg.cond(): Condition number
+            - np.linalg.norm(): Matrix/vector norms
+    - Advanced linear algebra
+        * Eigenvalue problems
+            - np.linalg.eig(): General eigenvalue problem
+            - np.linalg.eigh(): Hermitian eigenvalue problem
+            - np.linalg.eigvals(): Eigenvalues only
+            - Eigenvalue ordering and selection
+        * Matrix factorizations
+            - LU decomposition via scipy
+            - Schur decomposition
+            - Jordan normal form
+        * Specialized matrices
+            - Identity matrices: np.eye()
+            - Diagonal matrices: np.diag()
+            - Triangular matrices: np.triu(), np.tril()
+            - Band matrices
+
+3.4 Fourier Transforms
+    - Discrete Fourier Transform
+        * Basic FFT operations
+            - np.fft.fft(): 1D FFT
+            - np.fft.fft2(): 2D FFT
+            - np.fft.fftn(): N-dimensional FFT
+            - Inverse transforms: ifft, ifft2, ifftn
+        * Real FFT functions
+            - np.fft.rfft(): Real input FFT
+            - np.fft.rfft2(): Real input 2D FFT
+            - np.fft.irfft(): Inverse real FFT
+            - Conjugate symmetry exploitation
+        * Frequency arrays
+            - np.fft.fftfreq(): Frequency coordinates
+            - np.fft.rfftfreq(): Real FFT frequencies
+            - np.fft.fftshift(): Shift zero frequency to center
+            - np.fft.ifftshift(): Inverse frequency shift
+    - FFT applications
+        * Signal processing
+            - Filtering in frequency domain
+            - Spectral analysis
+            - Convolution via FFT
+        * Performance considerations
+            - Power-of-2 sizes for efficiency
+            - Zero-padding effects
+            - Windowing functions
+        * Advanced FFT features
+            - Discrete Cosine Transform (DCT)
+            - Hermitian FFT
+            - Multi-dimensional transforms
+
+MODULE 4: BROADCASTING AND VECTORIZATION
+-----------------------------------------
+4.1 Broadcasting Rules
+    - Broadcasting fundamentals
+        * Concept and motivation
+            - Perform operations on different-sized arrays
+            - Avoid explicit loops
+            - Memory efficient operations
+            - Element-wise operations generalization
+        * Broadcasting rules
+            - Arrays aligned from trailing dimension
+            - Size 1 dimensions stretched to match
+            - Missing dimensions added as size 1
+            - Incompatible shapes raise ValueError
+    - Broadcasting examples
+        * Scalar with array
+            - arr + scalar: Scalar added to every element
+            - Broadcasting scalar to array shape
+            - Type promotion in scalar operations
+        * Array with array
+            - Compatible shapes: (3, 4) with (4,)
+            - Incompatible shapes: (3, 4) with (3,)
+            - Multi-dimensional broadcasting
+        * Complex broadcasting
+            - (256, 256, 3) with (3,): Color image operations
+            - (1, 10) with (10, 1): Outer product-like operations
+            - Multiple dimension alignment
+    - Broadcasting applications
+        * Vectorized operations
+            - Distance calculations
+            - Normalization operations
+            - Statistical operations across dimensions
+        * Memory efficiency
+            - Avoiding array duplication
+            - Large array operations
+            - Temporary array minimization
+        * Common broadcasting patterns
+            - Row/column operations
+            - Outer operations
+            - Dimension reduction with broadcasting
+
+4.2 Vectorization Techniques
+    - Vectorization principles
+        * Replace explicit loops
+            - Python loops are slow
+            - NumPy operations use compiled C
+            - Element-wise operations
+            - Batch processing
+        * Vectorized function creation
+            - np.vectorize(): Vectorize Python functions
+            - Performance considerations
+            - Type specification and output types
+            - Exclusion parameters for non-vectorized args
+    - Performance optimization
+        * Memory layout optimization
+            - C-contiguous vs Fortran-contiguous
+            - Memory access patterns
+            - Cache efficiency
+        * Operation chaining
+            - Minimize temporary arrays
+            - Use compound operations
+            - In-place operations when possible
+        * Data type optimization
+            - Appropriate precision selection
+            - Memory vs speed trade-offs
+            - Integer vs float operations
+    - Advanced vectorization
+        * Conditional operations
+            - np.where(): Vectorized if-else
+            - np.select(): Multiple conditions
+            - Boolean array indexing
+        * Custom ufuncs
+            - Creating compiled functions
+            - Numba integration
+            - Performance comparison
+        * Structured operations
+            - Working with structured arrays
+            - Field-wise operations
+            - Record array processing
+
+4.3 Advanced Array Operations
+    - Array set operations
+        * Set-like operations
+            - np.unique(): Unique elements
+            - np.intersect1d(): Intersection
+            - np.union1d(): Union
+            - np.setdiff1d(): Difference
+            - np.setxor1d(): Symmetric difference
+        * Advanced set operations
+            - np.in1d(): Element membership
+            - assume_unique parameter for performance
+            - return_indices options
+            - Multi-dimensional set operations
+    - Searching and sorting
+        * Searching arrays
+            - np.where(): Conditional element selection
+            - np.argwhere(): Indices of non-zero elements
+            - np.searchsorted(): Binary search
+            - np.extract(): Extract elements by condition
+        * Sorting operations
+            - np.sort(): Return sorted copy
+            - ndarray.sort(): In-place sorting
+            - np.argsort(): Indices of sorted elements
+            - np.lexsort(): Lexicographic sorting
+            - kind parameter (quicksort, mergesort, heapsort)
+        * Partitioning
+            - np.partition(): Partial sorting
+            - np.argpartition(): Partial sorting indices
+            - kth parameter for k-th smallest
+    - Array validation and testing
+        * Finite value testing
+            - np.isfinite(): Test for finite values
+            - np.isinf(): Test for infinity
+            - np.isnan(): Test for NaN values
+            - np.isneginf(), np.isposinf(): Specific infinities
+        * Array property testing
+            - np.allclose(): Approximate equality
+            - np.array_equal(): Exact equality
+            - np.shares_memory(): Memory sharing test
+            - np.may_share_memory(): Possible sharing test
+
+MODULE 5: RANDOM NUMBER GENERATION
+-----------------------------------
+5.1 Random Number Fundamentals
+    - NumPy random module evolution
+        * Legacy RandomState (numpy.random)
+            - Global state approach
+            - Reproducibility challenges
+            - Thread safety issues
+        * Modern Generator approach (numpy.random.Generator)
+            - Explicit state management
+            - Better performance
+            - Improved algorithms
+            - Thread safety
+    - Random number generators
+        * Pseudorandom vs true random
+            - Deterministic algorithms
+            - Seed-based reproducibility
+            - Quality metrics
+        * Generator algorithms
+            - PCG64: Default generator (good performance/quality)
+            - MT19937: Mersenne Twister (compatibility)
+            - Philox: Counter-based (parallel streams)
+            - SFC64: Small, fast, good quality
+    - Seeding and reproducibility
+        * Seed specification
+            - Integer seeds for reproducibility
+            - BitGenerator seeding
+            - Global vs local state
+        * Random state management
+            - Generator instantiation
+            - State saving and restoration
+            - Multiple independent streams
+
+5.2 Random Sampling
+    - Uniform distributions
+        * Basic uniform sampling
+            - random(): Values in [0, 1)
+            - uniform(): Values in [low, high)
+            - integers(): Random integers
+            - choice(): Random selection from array
+        * Array sampling
+            - Sample shape specification
+            - Dtype specification
+            - Output array parameter
+    - Probability distributions
+        * Continuous distributions
+            - normal(): Normal (Gaussian) distribution
+                - loc (mean), scale (std dev) parameters
+                - Standard normal vs general normal
+            - exponential(): Exponential distribution
+            - gamma(): Gamma distribution
+            - beta(): Beta distribution
+            - uniform(): Uniform continuous
+        * Discrete distributions
+            - binomial(): Binomial distribution
+            - poisson(): Poisson distribution
+            - geometric(): Geometric distribution
+            - hypergeometric(): Hypergeometric distribution
+            - negative_binomial(): Negative binomial
+        * Specialized distributions
+            - multivariate_normal(): Multivariate normal
+            - dirichlet(): Dirichlet distribution
+            - multinomial(): Multinomial distribution
+            - wishart(): Wishart distribution
+    - Sampling techniques
+        * Sampling without replacement
+            - choice() with replace=False
+            - shuffle(): In-place array shuffling
+            - permutation(): Return shuffled copy
+        * Weighted sampling
+            - choice() with p parameter
+            - Probability array normalization
+            - Weighted random selection
+        * Advanced sampling
+            - Reservoir sampling for large populations
+            - Stratified sampling
+            - Importance sampling setup
+
+5.3 Random Array Generation
+    - Array creation with random values
+        * Shape specification
+            - Scalar shape: size parameter
+            - Tuple shape: multi-dimensional arrays
+            - Broadcasting in random generation
+        * Data type control
+            - Default dtypes for different distributions
+            - Explicit dtype specification
+            - Memory considerations
+    - Random array initialization
+        * Random matrices
+            - Random symmetric matrices
+            - Random orthogonal matrices
+            - Random positive definite matrices
+        * Random structured data
+            - Random sparse matrices (with scipy)
+            - Random graph adjacency matrices
+            - Random time series data
+    - Performance considerations
+        * Batch generation vs repeated calls
+        * Memory allocation patterns
+        * Vectorized random operations
+        * Parallel random generation
+
+5.4 Statistical Applications
+    - Monte Carlo methods
+        * Monte Carlo integration
+            - Random sampling for integration
+            - Convergence analysis
+            - Error estimation
+        * Simulation studies
+            - Bootstrap sampling
+            - Permutation tests
+            - Confidence interval estimation
+    - Random process simulation
+        * Stochastic processes
+            - Random walks
+            - Brownian motion
+            - Markov chains
+        * Time series simulation
+            - ARMA process simulation
+            - Seasonal patterns
+            - Noise generation
+    - Hypothesis testing
+        * Permutation tests
+            - Random permutation generation
+            - Test statistic calculation
+            - P-value estimation
+        * Bootstrap methods
+            - Bootstrap sample generation
+            - Confidence interval construction
+            - Bias estimation
+
+MODULE 6: INPUT/OUTPUT AND FILE HANDLING
+-----------------------------------------
+6.1 Array I/O Operations
+    - Binary file I/O
+        * save() and load()
+            - np.save(): Save single array to .npy file
+            - np.load(): Load array from .npy file
+            - Binary format efficiency
+            - Metadata preservation
+        * savez() and savez_compressed()
+            - Multiple arrays in .npz archive
+            - Dictionary-like access
+            - Compression options
+            - Memory mapping support
+    - Text file I/O
+        * savetxt() and loadtxt()
+            - np.savetxt(): Write array to text file
+                - Delimiter specification
+                - Format string control
+                - Header and footer options
+                - Comments parameter
+            - np.loadtxt(): Read array from text file
+                - Delimiter specification
+                - Data type specification
+                - Skip rows and use columns
+                - Converter functions
+        * Advanced text I/O
+            - CSV file handling
+            - Custom delimiter handling
+            - Missing value handling
+            - Mixed data type files
+    - Specialized file formats
+        * Memory-mapped files
+            - np.memmap(): Memory-mapped array
+            - Large file handling
+            - Out-of-core computation
+            - Mode specification (r, w, r+, c)
+        * fromfile() and tofile()
+            - Raw binary I/O
+            - Data type specification
+            - Endianness handling
+            - Performance considerations
+
+6.2 Data Exchange Formats
+    - Cross-language compatibility
+        * Native NumPy format (.npy, .npz)
+            - Python-specific format
+            - Efficient for NumPy arrays
+            - Metadata preservation
+        * HDF5 format (with h5py)
+            - Hierarchical data format
+            - Cross-platform compatibility
+            - Compression and chunking
+            - Metadata support
+        * MATLAB format (with scipy.io)
+            - .mat file reading/writing
+            - Variable name handling
+            - Structure and cell array support
+    - Text-based formats
+        * CSV integration
+            - Using np.loadtxt() for CSV
+            - Pandas integration for complex CSV
+            - Custom parsers for special formats
+        * JSON integration
+            - Array serialization to JSON
+            - Nested array handling
+            - Type preservation challenges
+        * XML and other structured formats
+            - Integration with parsing libraries
+            - NumPy array embedding
+            - Schema considerations
+
+6.3 Memory Mapping
+    - Memory mapping concepts
+        * Virtual memory utilization
+            - Map file contents to memory
+            - Operating system page caching
+            - Lazy loading behavior
+        * Advantages and use cases
+            - Large file processing
+            - Shared memory between processes
+            - Efficient random access
+            - Memory conservation
+    - Memory mapping operations
+        * Creating memory maps
+            - np.memmap() constructor
+            - Mode specification (r, w, r+, c)
+            - Shape and dtype specification
+            - Offset parameter for partial mapping
+        * Memory map manipulation
+            - Modification through array operations
+            - Flush operations for persistence
+            - Closing and cleanup
+        * Performance considerations
+            - Page size alignment
+            - Sequential vs random access
+            - Memory mapping overhead
+    - Advanced memory mapping
+        * Structured memory maps
+            - Complex data types
+            - Record arrays
+            - Heterogeneous data
+        * Shared memory applications
+            - Multi-process data sharing
+            - Inter-process communication
+            - Synchronization considerations
+
+MODULE 7: PERFORMANCE AND OPTIMIZATION
+---------------------------------------
+7.1 Performance Fundamentals
+    - NumPy performance characteristics
+        * Memory layout importance
+            - C-contiguous (row-major) order
+            - Fortran-contiguous (column-major) order
+            - Memory access patterns
+            - Cache efficiency
+        * Vectorization benefits
+            - Eliminating Python loops
+            - SIMD instruction utilization
+            - Reduced function call overhead
+            - Type-homogeneous operations
+        * Broadcasting efficiency
+            - Avoiding array duplication
+            - Memory-efficient operations
+            - Reduced temporary array creation
+    - Profiling and benchmarking
+        * Timing operations
+            - %timeit magic command (Jupyter)
+            - timeit module for scripts
+            - time.perf_counter() for custom timing
+        * Memory profiling
+            - Memory usage monitoring
+            - Array size calculation
+            - Memory leak detection
+        * Performance bottleneck identification
+            - Line profiling
+            - Function profiling
+            - Memory access pattern analysis
+
+7.2 Optimization Techniques
+    - Memory optimization
+        * Data type selection
+            - Appropriate precision choice
+            - int32 vs int64 considerations
+            - float32 vs float64 trade-offs
+            - Boolean array efficiency
+        * Memory layout optimization
+            - np.ascontiguousarray(): Ensure C-contiguous
+            - np.asfortranarray(): Ensure Fortran-contiguous
+            - Order parameter in array creation
+            - Stride patterns and access
+        * View vs copy management
+            - Understanding when copies are made
+            - Minimizing unnecessary copies
+            - In-place operations
+            - Memory sharing analysis
+    - Computational optimization
+        * Operation selection
+            - Choosing efficient algorithms
+            - Built-in function usage
+            - Avoiding redundant calculations
+        * Loop optimization strategies
+            - Vectorization techniques
+            - Eliminating nested loops
+            - Broadcasting for multi-dimensional operations
+        * Temporary array reduction
+            - Chaining operations
+            - In-place modifications
+            - Pre-allocated output arrays
+    - Advanced optimization
+        * Compilation integration
+            - Numba JIT compilation
+            - Cython integration
+            - Performance comparison
+        * Parallel processing
+            - Multi-threading considerations
+            - Multi-processing with shared arrays
+            - Parallel algorithms
+
+7.3 Large Array Handling
+    - Out-of-core computation
+        * Memory mapping strategies
+            - Processing larger-than-memory arrays
+            - Chunk-based processing
+            - Sliding window operations
+        * Chunking algorithms
+            - Block-wise operations
+            - Overlap handling
+            - Result aggregation
+        * Streaming operations
+            - Processing data streams
+            - Online algorithms
+            - Incremental statistics
+    - Sparse array considerations
+        * When to use sparse arrays
+            - Memory efficiency for sparse data
+            - Operation efficiency trade-offs
+        * scipy.sparse integration
+            - Sparse matrix formats
+            - NumPy array conversion
+            - Mixed dense/sparse operations
+    - Distributed computing
+        * Dask integration
+            - Dask array as NumPy analog
+            - Lazy evaluation
+            - Distributed processing
+        * MPI for scientific computing
+            - mpi4py integration
+            - Distributed array operations
+            - Communication patterns
+
+7.4 Best Practices
+    - Code organization
+        * Function design principles
+            - Pure functions when possible
+            - Clear input/output specifications
+            - Appropriate abstraction levels
+        * Error handling
+            - Input validation
+            - Shape compatibility checking
+            - Numeric stability considerations
+        * Documentation and testing
+            - Docstring conventions
+            - Unit testing strategies
+            - Performance regression testing
+    - Common pitfalls
+        * Unnecessary array copying
+            - Understanding view semantics
+            - Copy vs reference awareness
+            - Memory management
+        * Broadcasting mistakes
+            - Shape compatibility issues
+            - Unintended broadcasting
+            - Performance implications
+        * Type-related issues
+            - Integer overflow
+            - Floating-point precision
+            - Complex number handling
+
+MODULE 8: INTEGRATION WITH OTHER LIBRARIES
+-------------------------------------------
+8.1 Scientific Python Ecosystem
+    - SciPy integration
+        * scipy.linalg vs numpy.linalg
+            - Enhanced linear algebra routines
+            - Specialized decompositions
+            - Improved performance
+        * Special functions
+            - Mathematical functions
+            - Statistical distributions
+            - Integration with NumPy arrays
+        * Signal processing
+            - Filtering operations
+            - Fourier transforms
+            - Spectral analysis
+    - Matplotlib integration
+        * Array plotting
+            - Direct array visualization
+            - Image display with imshow()
+            - 3D plotting capabilities
+        * Data preparation for plots
+            - Axis arrangement
+            - Data reshaping
+            - Color mapping
+    - Pandas integration
+        * NumPy as pandas foundation
+            - DataFrame underlying arrays
+            - Series as enhanced arrays
+            - Index arrays
+        * Data interchange
+            - DataFrame.values
+            - Array to DataFrame conversion
+            - Type compatibility
+
+8.2 Machine Learning Libraries
+    - Scikit-learn integration
+        * Feature arrays
+            - X matrix representation
+            - Target vector representation
+            - Sparse matrix support
+        * Preprocessing utilities
+            - StandardScaler with arrays
+            - Feature engineering
+            - Data splitting
+        * Model interfaces
+            - Fit/predict paradigm
+            - Cross-validation
+            - Pipeline integration
+    - Deep learning frameworks
+        * TensorFlow/Keras
+            - NumPy array input
+            - Tensor conversion
+            - CPU/GPU data movement
+        * PyTorch integration
+            - torch.from_numpy()
+            - Shared memory tensors
+            - Automatic differentiation
+        * JAX compatibility
+            - jax.numpy as drop-in replacement
+            - JIT compilation benefits
+            - Functional programming paradigm
+
+8.3 Data Storage and Formats
+    - HDF5 with h5py
+        * Hierarchical data storage
+            - Dataset creation from arrays
+            - Attribute storage
+            - Compression options
+        * Large dataset handling
+            - Chunked storage
+            - Partial reading/writing
+            - Memory mapping
+    - Database integration
+        * Array storage in databases
+            - Binary storage options
+            - Serialization strategies
+            - Query optimization
+        * Time series databases
+            - Array-based time series
+            - Efficient storage formats
+            - Indexing strategies
+    - Cloud storage integration
+        * Cloud-based array processing
+            - AWS S3 integration
+            - Google Cloud Storage
+            - Distributed processing
+
+8.4 Compiled Extensions
+    - Cython integration
+        * NumPy array handling in Cython
+            - Memory views
+            - Type declarations
+            - Performance optimization
+        * C API exposure
+            - Direct memory access
+            - Custom ufunc creation
+            - Extension module development
+    - Numba integration
+        * JIT compilation
+            - @jit decorator usage
+            - NumPy function acceleration
+            - GPU computation with CUDA
+        * Performance comparison
+            - Compiled vs interpreted
+            - Memory access patterns
+            - Optimization strategies
+    - SWIG and ctypes
+        * Foreign function interfaces
+            - C library integration
+            - Memory management
+            - Error handling
+        * Performance considerations
+            - Function call overhead
+            - Data conversion costs
+            - Memory copying
+
+MODULE 9: ADVANCED TOPICS
+--------------------------
+9.1 Custom Data Types and Structured Arrays
+    - Structured array fundamentals
+        * Definition and creation
+            - Field specification with dtype
+            - Named fields
+            - Mixed data types
+        * Field access
+            - By field name: arr['field_name']
+            - Multiple field selection
+            - Field modification
+        * Structured array operations
+            - Sorting by field
+            - Field-wise operations
+            - Type promotion in operations
+    - Record arrays
+        * Enhanced structured arrays
+            - Attribute-style access: arr.field_name
+            - Convenience methods
+            - Performance considerations
+        * Creation methods
+            - np.rec.fromarrays()
+            - np.rec.fromrecords()
+            - Conversion from structured arrays
+    - Custom dtype creation
+        * Complex dtype specifications
+            - Nested structures
+            - Array fields
+            - Alignment considerations
+        * dtype objects
+            - Field metadata
+            - Size and alignment
+            - Subdtype specifications
+        * Union types
+            - Overlapping memory layout
+            - Type interpretation
+            - Use cases and limitations
+
+9.2 Advanced Memory Management
+    - Memory layout control
+        * Strides and memory layout
+            - Understanding array strides
+            - Manual stride calculation
+            - Performance implications
+        * Buffer protocol
+            - Python buffer interface
+            - Memory sharing between objects
+            - External library integration
+        * Memory alignment
+            - Alignment requirements
+            - SIMD optimization
+            - Padding considerations
+    - Custom array classes
+        * Subclassing ndarray
+            - __new__ and __array_finalize__
+            - Method preservation
+            - Attribute handling
+        * Array protocols
+            - __array_interface__
+            - __array_struct__
+            - __array_priority__
+        * Duck array protocol
+            - NEP 18 compatibility
+            - Custom array implementations
+            - Dispatcher functions
+
+9.3 Advanced Indexing and Views
+    - Advanced view creation
+        * Custom slicing
+            - Step patterns
+            - Multi-dimensional views
+            - Memory efficiency
+        * Diagonal extraction
+            - np.diag() variations
+            - Custom diagonal patterns
+            - Matrix operations
+        * Window operations
+            - Rolling window views
+            - Sliding window arrays
+            - Overlap handling
+    - Structured indexing
+        * Multi-field indexing
+            - Complex selection criteria
+            - Boolean indexing on fields
+            - Performance optimization
+        * Hierarchical indexing
+            - Multi-level field access
+            - Nested structure navigation
+            - Query optimization
+    - Memory mapping advanced features
+        * Custom memory mapping
+            - File format handling
+            - Partial file mapping
+            - Multiple file handling
+        * Shared memory arrays
+            - Inter-process communication
+            - Synchronization primitives
+            - Data consistency
+
+9.4 Numerical Algorithms Implementation
+    - Algorithm development
+        * Numerical method implementation
+            - Iterative algorithms
+            - Convergence criteria
+            - Stability analysis
+        * Custom mathematical functions
+            - Special function implementation
+            - Approximation methods
+            - Error analysis
+        * Optimization algorithms
+            - Gradient descent variants
+            - Newton's method
+            - Constraint handling
+    - Scientific computing patterns
+        * Finite difference methods
+            - Stencil operations
+            - Boundary condition handling
+            - Grid-based computations
+        * Monte Carlo methods
+            - Random sampling strategies
+            - Variance reduction
+            - Parallel random generation
+        * Linear algebra algorithms
+            - Custom matrix operations
+            - Specialized decompositions
+            - Numerical stability
+
+MODULE 10: NUMPY ECOSYSTEM AND BEST PRACTICES
+----------------------------------------------
+10.1 NumPy Ecosystem Overview
+    - Core ecosystem libraries
+        * SciPy: Advanced scientific computing
+            - Optimization, integration, interpolation
+            - Special functions and statistical distributions
+            - Sparse matrices and spatial algorithms
+        * Matplotlib: Data visualization
+            - Array-based plotting
+            - Image processing and display
+            - Animation and interactive plots
+        * Pandas: Data analysis and manipulation
+            - DataFrame and Series built on NumPy
+            - Time series analysis
+            - Data I/O and cleaning
+    - Specialized libraries
+        * scikit-image: Image processing
+            - NumPy array-based image representation
+            - Filtering, morphology, feature detection
+            - Integration with matplotlib
+        * scikit-learn: Machine learning
+            - NumPy arrays for data representation
+            - Preprocessing and feature engineering
+            - Model training and evaluation
+        * Astropy: Astronomy and astrophysics
+            - Units and coordinates
+            - FITS file handling
+            - Astronomical calculations
+    - Emerging technologies
+        * JAX: Accelerated NumPy
+            - Automatic differentiation
+            - JIT compilation
+            - GPU/TPU acceleration
+        * CuPy: GPU-accelerated NumPy
+            - CUDA-based NumPy alternative
+            - Memory management on GPU
+            - Interoperability with NumPy
+        * Dask: Parallel and distributed computing
+            - Out-of-core arrays
+            - Task graphs and lazy evaluation
+            - Scaling beyond single machines
+
+10.2 Performance Best Practices
+    - Algorithm design principles
+        * Vectorization strategies
+            - Eliminate explicit loops
+            - Use broadcasting effectively
+            - Leverage built-in functions
+        * Memory access optimization
+            - Cache-friendly access patterns
+            - Minimize data movement
+            - Use appropriate data types
+        * Computational complexity awareness
+            - O(n) vs O(n²) algorithms
+            - Space-time trade-offs
+            - Asymptotic behavior analysis
+    - Code optimization techniques
+        * Profiling-driven optimization
+            - Identify bottlenecks first
+            - Measure before and after changes
+            - Use appropriate profiling tools
+        * Memory optimization
+            - Minimize array copying
+            - Use views when possible
+            - Choose appropriate data types
+        * Compilation strategies
+            - Numba for JIT compilation
+            - Cython for static compilation
+            - GPU acceleration options
+    - Scalability considerations
+        * Large array handling
+            - Memory mapping for huge datasets
+            - Chunked processing strategies
+            - Out-of-core algorithms
+        * Parallel processing
+            - Thread-level parallelism
+            - Process-level parallelism
+            - Distributed computing options
+        * Hardware utilization
+            - CPU architecture awareness
+            - SIMD instruction usage
+            - GPU acceleration when appropriate
+
+10.3 Development Best Practices
+    - Code organization and style
+        * Function design principles
+            - Single responsibility principle
+            - Clear input/output contracts
+            - Appropriate abstraction levels
+        * Error handling strategies
+            - Input validation
+            - Graceful error recovery
+            - Informative error messages
+        * Documentation practices
+            - NumPy-style docstrings
+            - Type hints and annotations
+            - Usage examples
+    - Testing strategies
+        * Unit testing with NumPy arrays
+            - Array comparison utilities
+            - Numerical tolerance handling
+            - Property-based testing
+        * Performance testing
+            - Regression detection
+            - Benchmarking frameworks
+            - Memory usage monitoring
+        * Integration testing
+            - Cross-library compatibility
+            - Version compatibility
+            - Platform-specific testing
+    - Reproducibility and version control
+        * Random seed management
+            - Deterministic computations
+            - Cross-platform consistency
+            - Version-dependent behavior
+        * Environment management
+            - Dependency specification
+            - Virtual environments
+            - Container-based development
+        * Documentation and sharing
+            - Jupyter notebook best practices
+            - Code sharing strategies
+            - Collaboration workflows
+
+10.4 Advanced Integration Patterns
+    - Custom array implementations
+        * Array protocol compliance
+            - __array__ method implementation
+            - NEP 18 dispatcher functions
+            - Compatibility considerations
+        * Memory-efficient patterns
+            - Lazy evaluation strategies
+            - Copy-on-write implementations
+            - Reference counting optimization
+        * Domain-specific arrays
+            - Units-aware arrays
+            - Masked array extensions
+            - Sparse array implementations
+    - Library development
+        * API design principles
+            - NumPy compatibility
+            - Consistent naming conventions
+            - Backward compatibility
+        * Extension module development
+            - C extension modules
+            - Cython-based extensions
+            - SWIG bindings
+        * Distribution and packaging
+            - setup.py configuration
+            - Binary distribution strategies
+            - Cross-platform compatibility
+    - Performance monitoring and optimization
+        * Continuous performance monitoring
+            - Automated benchmarking
+            - Performance regression detection
+            - Optimization opportunity identification
+        * Advanced profiling techniques
+            - Line-by-line profiling
+            - Memory profiling
+            - Cache performance analysis
+        * Hardware-specific optimizations
+            - CPU-specific optimizations
+            - GPU acceleration strategies
+            - Memory hierarchy optimization
+
+This comprehensive NumPy syllabus provides a complete learning path from basic array operations to advanced numerical computing techniques, covering both theoretical concepts and practical applications in the scientific Python ecosystem.

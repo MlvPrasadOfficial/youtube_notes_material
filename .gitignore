@@ -1,0 +1,43 @@
+# Exclude Python folder
+python/
+
+# Python
+*.py[cod]
+__pycache__/
+*.so
+.Python
+env/
+venv/
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Claude
+.claude/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.bak
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/

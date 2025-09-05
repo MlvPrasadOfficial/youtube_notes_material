@@ -1,0 +1,4 @@
+i am creating a detailed reading material for only python for data scientist students 
+i want detailed syllabus for the course to create as a jupyter notebook to read for my student , it should cover everything
+only python for data science ,nothing else give topics and detailed sub topics , create a folder `python` and file python_syllabus.txt  
+and add the syllabus in that file
